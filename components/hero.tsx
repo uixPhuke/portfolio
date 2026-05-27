@@ -28,10 +28,10 @@ export default function Hero() {
       {/* GLOBAL BACKGROUND */}
       <div className="absolute inset-0">
         {/* MAIN GLOW */}
-        <div className="absolute left-1/2 top-[-200px] h-[1000px] w-[1000px] -translate-x-1/2 rounded-full bg-violet-600/30 blur-[180px]" />
+        <div className="absolute left-1/2 top-[-200px] h-[500px] w-[1000px] -translate-x-1/2 rounded-full bg-blue-800 blur-[180px]" />
 
         {/* DARK OVERLAY */}
-        <div className="absolute inset-0 bg-[#0d1117]/80" />
+        <div className="absolute inset-0 " />
       </div>
 
       {/* HERO CONTENT */}
@@ -49,13 +49,13 @@ export default function Hero() {
         </p>
 
         <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-          <input
+          {/*<input
             type="email"
             placeholder="Enter your email"
             className="h-14 w-full rounded-md border border-white/10 bg-white px-4 text-black sm:w-[320px]"
-          />
+          />*/}
 
-          <button className="h-14 rounded-md bg-green-600 px-8 font-semibold text-white hover:bg-green-700">
+          <button className="h-14 rounded-md bg-blue-700 px-8 font-semibold text-white hover:bg-green-700">
             GitHub
           </button>
 
