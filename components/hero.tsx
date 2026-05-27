@@ -1,20 +1,53 @@
-export default function Hero() {
-  return (
-    <section className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-6 text-center">
-      {/* BACKGROUND */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,#4f46e5_0%,#0d1117_55%)]" />
+"use client"
 
-      {/* CONTENT */}
-      <div className="relative z-10 max-w-4xl pt-20">
+import { motion, useScroll, useTransform } from "framer-motion"
+import { useRef } from "react"
+
+export default function Hero() {
+  const ref = useRef(null)
+
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start start", "end start"],
+  })
+
+  // HERO fades while scrolling
+  const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0])
+
+  // HERO moves upward
+  const y = useTransform(scrollYProgress, [0, 1], [0, -200])
+
+  // HERO scales down
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 0.88])
+
+  return (
+    <section
+      ref={ref}
+      className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[#0d1117] px-6 text-center"
+    >
+      {/* GLOBAL BACKGROUND */}
+      <div className="absolute inset-0">
+        {/* MAIN GLOW */}
+        <div className="absolute left-1/2 top-[-200px] h-[1000px] w-[1000px] -translate-x-1/2 rounded-full bg-violet-600/30 blur-[180px]" />
+
+        {/* DARK OVERLAY */}
+        <div className="absolute inset-0 bg-[#0d1117]/80" />
+      </div>
+
+      {/* HERO CONTENT */}
+      <motion.div
+        style={{ opacity, y, scale }}
+        className="relative z-10 max-w-4xl"
+      >
         <h1 className="text-5xl font-bold leading-tight tracking-tight md:text-7xl">
           Exploring the Future
         </h1>
 
         <p className="mt-6 text-lg text-gray-300 md:text-xl">
-          A full Stack Developer with a passion for building innovative solutions and exploring the latest technologies. With a strong foundation in both frontend and backend development, I thrive on creating seamless user experiences and scalable applications. Let's connect and build something amazing together!
+          A full Stack Developer with a passion for building innovative
+          solutions and exploring the latest technologies.
         </p>
 
-        {/* BUTTONS */}
         <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
           <input
             type="email"
@@ -30,7 +63,7 @@ export default function Hero() {
             Try GPT
           </button>
         </div>
-      </div>
+      </motion.div>
     </section>
   )
 }
