@@ -29,4 +29,4 @@ export default function ScrollToTop() {
       <FaArrowUp />
     </button>
   )
-}
+} 
