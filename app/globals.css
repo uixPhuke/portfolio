@@ -157,6 +157,3 @@ h6 {
   font-family: var(--font-syne);
 }
 
-html {
-  scroll-behavior: smooth;
-}
