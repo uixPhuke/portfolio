@@ -32,6 +32,7 @@ export default function Navbar() {
               <Link
                 key={item.label}
                 href={item.href}
+                scroll={true}
                 className="text-sm font-medium text-gray-300 transition hover:text-white"
               >
                 {item.label}
@@ -54,7 +55,7 @@ export default function Navbar() {
             Admin
           </Button> */}
 
-          <Link href="/contact">
+          <Link href="/contact" scroll={true}>
   <Button className="bg-white text-black hover:bg-gray-200">
     Connect
   </Button>
