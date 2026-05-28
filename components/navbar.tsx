@@ -43,12 +43,12 @@ export default function Navbar() {
 
         {/* RIGHT */}
         <div className="hidden lg:flex items-center gap-4">
-          <Input
+         {/* <Input
             placeholder="Search or jump to..."
             className="w-[260px] border-white/10 bg-white/5 text-white placeholder:text-gray-400"
           />
 
-          {/* <Button
+           <Button
             variant="ghost"
             className="text-gray-300 hover:bg-white/10 hover:text-white"
           >
@@ -73,38 +73,57 @@ export default function Navbar() {
 
       {/* MOBILE MENU */}
       {open && (
-        <div className="border-t border-white/10 bg-[#0d1117] lg:hidden">
-          <div className="space-y-4 p-4">
-            <Input
-              placeholder="Search..."
-              className="border-white/10 bg-white/5 text-white"
-            />
+        
+<div
+  className={`overflow-hidden transition-all duration-500 ease-in-out lg:hidden ${
+    open ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"
+  }`}
+>
+  <div className="border-t border-white/10 bg-gradient-to-b from-[#111827] via-[#0d1117] to-black/95 backdrop-blur-2xl">
 
-            <nav className="flex flex-col gap-4">
-              {navItems.map((item) => (
-                <Link
-                  key={item.label}
-                  href={item.href}
-                  className="text-sm text-gray-300 hover:text-white"
-                >
-                  {item.label}
-                </Link>
-              ))}
-            </nav>
+    <div className="space-y-5 p-5">
 
-            <div className="flex flex-col gap-2 pt-4">
-             {/* <Button variant="ghost" className="justify-start text-gray-300">
-                Admin
-              </Button>*/}
+      {/* SEARCH 
+      <Input
+        placeholder="Search..."
+        className="rounded-full border-white/10 bg-white/5 text-white placeholder:text-gray-400 focus-visible:ring-1 focus-visible:ring-white/20"
+      />
+*/}
+      {/* NAV ITEMS */}
+      <nav className="flex flex-col gap-2">
 
-              <Link href="/contact">
-  <Button className="border border-white/20 bg-transparent text-white hover:bg-white hover:text-black">
-    Connect
-  </Button>
-</Link>
+        {navItems.map((item) => (
+          <Link
+            key={item.label}
+            href={item.href}
+            scroll={true}
+            onClick={() => setOpen(false)}
+            className="group rounded-2xl border border-transparent bg-white/[0.03] px-4 py-3 text-sm font-medium text-gray-300 transition-all duration-300 hover:border-white/10 hover:bg-white/10 hover:text-white"
+          >
+            <div className="flex items-center justify-between">
+              {item.label}
+
+              <span className="translate-x-0 opacity-0 transition-all duration-300 group-hover:translate-x-1 group-hover:opacity-100">
+                →
+              </span>
             </div>
-          </div>
-        </div>
+          </Link>
+        ))}
+
+      </nav>
+
+      {/* BUTTON */}
+      <div className="pt-2">
+        <Link href="/contact" onClick={() => setOpen(false)}>
+          <Button className="h-11 w-full rounded-2xl bg-white text-black transition-all duration-300 hover:scale-[1.02] hover:bg-gray-200">
+            Connect
+          </Button>
+        </Link>
+      </div>
+
+    </div>
+  </div>
+</div>
       )}
     </header>
   )
