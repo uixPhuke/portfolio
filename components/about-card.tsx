@@ -5,6 +5,7 @@ import {
   FaGithub,
   FaLinkedin,
   FaInstagram,
+  FaTwitter,
 } from "react-icons/fa"
 
 export default function AboutCard() {
@@ -110,6 +111,13 @@ export default function AboutCard() {
                 >
                   <FaInstagram />
                 </motion.a>
+                 <motion.a
+                  whileHover={{ y: -5 }}
+  href="#"
+  className="rounded-2xl border border-white/10 bg-white/[0.03] p-4 text-xl transition-all duration-300 hover:border-white/30 hover:bg-white/10"
+>
+  <FaTwitter />
+</motion.a>
 
               </div>
             </div>
@@ -178,17 +186,18 @@ export default function AboutCard() {
               </div>
 
               {/* BUTTONS */}
-              <div className="mt-12 flex flex-wrap gap-5">
+              {/* BUTTONS */}
+<div className="mt-12 flex flex-col items-center justify-center gap-5 sm:flex-row">
 
-                <button className="rounded-full bg-gradient-to-r from-violet-500 to-fuchsia-500 px-8 py-4 font-medium text-white shadow-[0_0_40px_rgba(139,92,246,0.4)] transition-all duration-300 hover:scale-105">
-                  Let’s Work Together
-                </button>
+  <button className="rounded-full bg-gradient-to-r from-violet-500 to-fuchsia-500 px-8 py-4 font-medium text-white shadow-[0_0_40px_rgba(139,92,246,0.4)] transition-all duration-300 hover:scale-105">
+    Let’s Work Together
+  </button>
 
-                <button className="rounded-full border border-white/10 bg-white/[0.03] px-8 py-4 font-medium backdrop-blur-xl transition-all duration-300 hover:bg-white hover:text-black">
-                  Download Resume
-                </button>
+  <button className="rounded-full border border-white/10 bg-white/[0.03] px-8 py-4 font-medium backdrop-blur-xl transition-all duration-300 hover:bg-white hover:text-black">
+    Download Resume
+  </button>
 
-              </div>
+</div>
             </div>
           </div>
         </motion.div>
