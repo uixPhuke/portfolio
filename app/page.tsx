@@ -9,6 +9,8 @@ import Skills from "@/components/skills"
 import Footer from "@/components/footer"
 import Explore from "@/components/explore"
 import ScrollToTop from "@/components/scrollToTop"
+import Experience from "@/components/experience"
+import Education from "@/components/education"
 
 export default function Home() {
   return (
@@ -22,8 +24,10 @@ export default function Home() {
       <Brands />
       <Services />
       <Skills />
+      <Experience/>
+      <Education/>
       <Explore />
-      
+
       
     </main>
   )
