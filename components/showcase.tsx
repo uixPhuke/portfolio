@@ -154,26 +154,26 @@ export default function Showcase() {
           </motion.div>
         </div>
 
-        {/* TABS */}
-        <div className="mt-12 flex justify-center">
-          <div className="flex items-center gap-3 rounded-full border border-white/10 bg-[#111827]/80 p-2 shadow-2xl backdrop-blur-xl">
+    {/* TABS */}
+<div className="mt-8 md:mt-12 flex justify-center px-4">
+  <div className="flex flex-wrap items-center justify-center gap-2 md:gap-3 rounded-2xl md:rounded-full border border-white/10 bg-[#111827]/80 p-2 shadow-2xl backdrop-blur-xl w-full sm:w-auto">
 
-            {tabs.map((tab, index) => (
-              <button
-                key={tab.name}
-                onClick={() => setActiveTab(index)}
-                className={`rounded-full px-6 py-3 text-sm font-medium transition-all duration-300 ${
-                  activeTab === index
-                    ? "bg-white text-black shadow-lg"
-                    : "text-gray-300 hover:text-white"
-                }`}
-              >
-                {tab.name}
-              </button>
-            ))}
+    {tabs.map((tab, index) => (
+      <button
+        key={tab.name}
+        onClick={() => setActiveTab(index)}
+        className={`rounded-full px-4 py-2 text-xs sm:text-sm md:px-6 md:py-3 font-medium transition-all duration-300 whitespace-nowrap ${
+          activeTab === index
+            ? "bg-white text-black shadow-lg"
+            : "text-gray-300 hover:text-white"
+        }`}
+      >
+        {tab.name}
+      </button>
+    ))}
 
-          </div>
-        </div>
+  </div>
+</div>
         <p className="mt-6 text-center text-lg text-gray-400">
           Showcasing the power of AI in transforming ideas into reality .
         </p>
