@@ -1,16 +1,52 @@
 "use client"
 
+import Link from "next/link"
 import { motion } from "framer-motion"
-import { useEffect } from "react"
+import { useMemo, useState } from "react"
 
-export default function ExploreGalleryPage() {
-      useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [])
+import { designs } from "@/app/data/designs"
+
+import {
+  Search,
+  LayoutGrid,
+  Rows3,
+  SlidersHorizontal,
+  ArrowUpRight,
+  Sparkles,
+} from "lucide-react"
+
+export default function DesignGalleryPage() {
+
+  const [search, setSearch] = useState("")
+  const [view, setView] = useState("grid")
+  const [sort, setSort] = useState("all")
+
+  const filteredDesigns = useMemo(() => {
+
+    return designs.filter((design) => {
+
+      const query = search.toLowerCase()
+
+      const matchesSearch =
+        design.title.toLowerCase().includes(query) ||
+        design.desc.toLowerCase().includes(query) ||
+        design.category.toLowerCase().includes(query)
+
+      const matchesSort =
+        sort === "all"
+          ? true
+          : design.category === sort
+
+      return matchesSearch && matchesSort
+
+    })
+
+  }, [search, sort])
+
   return (
     <main className="relative min-h-screen overflow-hidden bg-[#050816] px-6 py-24 text-white">
 
-      {/* GRID BACKGROUND */}
+      {/* BACKGROUND */}
       <div className="absolute inset-0 opacity-[0.05]">
 
         <div
@@ -26,7 +62,7 @@ export default function ExploreGalleryPage() {
 
       </div>
 
-      {/* GLOWS */}
+      {/* GLOW */}
       <div className="absolute left-0 top-0 h-[500px] w-[500px] rounded-full bg-cyan-500/10 blur-[140px]" />
 
       <div className="absolute bottom-0 right-0 h-[500px] w-[500px] rounded-full bg-violet-500/10 blur-[140px]" />
@@ -41,7 +77,7 @@ export default function ExploreGalleryPage() {
             <div className="h-px w-20 bg-cyan-400/40" />
 
             <p className="text-xs font-medium uppercase tracking-[0.5em] text-cyan-300">
-              EXPLORE MY WORK
+              DESIGN GALLERY
             </p>
 
             <div className="h-px w-20 bg-cyan-400/40" />
@@ -50,142 +86,186 @@ export default function ExploreGalleryPage() {
 
           <h1 className="text-5xl font-extrabold leading-none tracking-tight md:text-7xl">
 
-            Design{" "}
+            Creative{" "}
 
             <span className="bg-gradient-to-r from-cyan-400 via-blue-500 to-violet-500 bg-clip-text text-transparent">
-              Gallery.
+              Designs.
             </span>
 
           </h1>
 
           <p className="mx-auto mt-10 max-w-3xl text-lg leading-relaxed text-gray-400">
-            A curated collection of premium interfaces,
-            scalable SaaS systems, startup products,
-            dashboards, and cinematic web experiences
-            crafted with modern design principles.
+            Explore premium interfaces, cinematic UI systems,
+            startup experiences, and immersive visual designs.
           </p>
 
-          {/* TAGS */}
-          <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
+        </div>
 
-            {[
-              "Landing Pages",
-              "SaaS",
-              "Dashboards",
-              "Portfolio",
-              "AI Apps",
-              "Brand Systems",
-            ].map((item) => (
-              <div
-                key={item}
-                className="rounded-full border border-white/10 bg-white/[0.03] px-6 py-3 text-sm text-gray-300 backdrop-blur-xl"
-              >
-                {item}
+        {/* TOOLBAR */}
+        <div className="mt-16 flex justify-center lg:justify-end">
+
+          <div className="flex w-full flex-col gap-3 rounded-[28px] border border-white/10 bg-white/[0.03] p-3 backdrop-blur-2xl sm:w-auto sm:flex-row sm:items-center">
+
+            {/* LEFT */}
+            <div className="flex items-center gap-3">
+
+              {/* VIEW */}
+              <div className="flex items-center rounded-2xl border border-white/10 bg-[#0B1220]/80 p-1">
+
+                <button
+                  onClick={() => setView("grid")}
+                  className={`flex h-10 w-10 items-center justify-center rounded-xl transition-all duration-300 ${
+                    view === "grid"
+                      ? "bg-white text-black"
+                      : "text-gray-400 hover:text-white"
+                  }`}
+                >
+                  <LayoutGrid className="h-4 w-4" />
+                </button>
+
+                <button
+                  onClick={() => setView("list")}
+                  className={`flex h-10 w-10 items-center justify-center rounded-xl transition-all duration-300 ${
+                    view === "list"
+                      ? "bg-white text-black"
+                      : "text-gray-400 hover:text-white"
+                  }`}
+                >
+                  <Rows3 className="h-4 w-4" />
+                </button>
+
               </div>
-            ))}
+
+              {/* SORT */}
+              <div className="relative">
+
+                <select
+                  value={sort}
+                  onChange={(e) => setSort(e.target.value)}
+                  className="h-10 appearance-none rounded-2xl border border-white/10 bg-[#0B1220]/80 px-4 pr-10 text-sm text-gray-300 outline-none transition-all duration-300 focus:border-cyan-400/40"
+                >
+
+                  <option value="all">All</option>
+
+                  <option value="saas">SaaS</option>
+
+                  <option value="dashboard">Dashboard</option>
+
+                  <option value="portfolio">Portfolio</option>
+
+                  <option value="branding">Branding</option>
+
+                </select>
+
+                <SlidersHorizontal className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-500" />
+
+              </div>
+
+            </div>
+
+            {/* SEARCH */}
+            <div className="relative flex-1 sm:min-w-[260px]">
+
+              <Search className="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-500" />
+
+              <input
+                type="text"
+                placeholder="Search designs..."
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                className="h-10 w-full rounded-2xl border border-white/10 bg-[#0B1220]/80 pl-11 pr-4 text-sm text-white outline-none transition-all duration-300 placeholder:text-gray-500 focus:border-cyan-400/40"
+              />
+
+            </div>
 
           </div>
 
         </div>
 
-        {/* FEATURED SECTION */}
-       
+        {/* GRID */}
+        {view === "grid" ? (
 
-        {/* GALLERY GRID */}
-        <section className="mt-28">
+          <div className="mt-20 grid gap-8 md:grid-cols-2 xl:grid-cols-3">
 
-          <div className="mb-12 flex items-center justify-between">
+            {filteredDesigns.map((design, index) => (
 
-            <div>
-
-              <p className="text-sm uppercase tracking-[0.3em] text-cyan-300">
-                Featured Projects
-              </p>
-
-              <h2 className="mt-4 text-4xl font-bold">
-                Explore Recent Work
-              </h2>
-
-            </div>
-
-            <button className="rounded-2xl border border-white/10 bg-white/[0.03] px-6 py-3 text-sm text-gray-300 backdrop-blur-xl transition-all duration-300 hover:border-cyan-400/30">
-              View All
-            </button>
-
-          </div>
-
-          {/* GRID */}
-          <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
-
-            {[
-              {
-                title: "AI SaaS Platform",
-                image: "/projects/project4.jpg",
-              },
-              {
-                title: "Luxury Portfolio",
-                image: "/projects/project5.jpg",
-              },
-              {
-                title: "Startup Dashboard",
-                image: "/projects/project6.jpg",
-              },
-              {
-                title: "Finance UI",
-                image: "/projects/project7.jpg",
-              },
-              {
-                title: "Creative Agency",
-                image: "/projects/project8.jpg",
-              },
-              {
-                title: "Mobile Experience",
-                image: "/projects/project9.jpg",
-              },
-            ].map((project) => (
               <motion.div
-                key={project.title}
+                key={design.slug}
+                initial={{
+                  opacity: 0,
+                  y: 50,
+                }}
+                whileInView={{
+                  opacity: 1,
+                  y: 0,
+                }}
+                transition={{
+                  duration: 0.5,
+                  delay: index * 0.05,
+                }}
+                viewport={{
+                  once: true,
+                }}
                 whileHover={{
                   y: -8,
                 }}
-                transition={{
-                  duration: 0.3,
-                }}
-                className="group overflow-hidden rounded-[32px] border border-white/10 bg-white/[0.03] backdrop-blur-2xl"
+                className="group relative overflow-hidden rounded-[34px] border border-white/10 bg-white/[0.03] backdrop-blur-2xl"
               >
 
                 {/* IMAGE */}
                 <div className="relative overflow-hidden">
 
                   <img
-                    src={project.image}
-                    alt={project.title}
-                    className="h-[320px] w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    src={design.image}
+                    alt={design.title}
+                    className="h-[500px] w-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
 
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+                  {/* OVERLAY */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#050816] via-[#050816]/40 to-transparent" />
 
-                </div>
+                  {/* CATEGORY */}
+                  <div className="absolute left-5 top-5">
 
-                {/* CONTENT */}
-                <div className="p-6">
+                    <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-black/30 px-4 py-2 text-xs text-gray-300 backdrop-blur-xl">
 
-                  <div className="flex items-center justify-between">
+                      <Sparkles className="h-3 w-3 text-cyan-400" />
 
-                    <h3 className="text-2xl font-semibold text-white">
-                      {project.title}
-                    </h3>
+                      {design.category}
 
-                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.03]">
-                      ↗
                     </div>
 
                   </div>
 
-                  <p className="mt-4 leading-relaxed text-gray-400">
-                    Modern premium interface crafted with
-                    scalability, motion, and immersive UX.
-                  </p>
+                  {/* CONTENT */}
+                  <div className="absolute inset-x-0 bottom-0 z-10 p-6">
+
+                    <div className="flex items-end justify-between gap-5">
+
+                      <div>
+
+                        <h2 className="text-3xl font-bold text-white">
+                          {design.title}
+                        </h2>
+
+                        <p className="mt-2 text-gray-300">
+                          {design.desc}
+                        </p>
+
+                      </div>
+
+                      <Link
+                        href={`/design/${design.slug}`}
+                        className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-xl transition-all duration-300 hover:border-cyan-400/30"
+                      >
+
+                        <ArrowUpRight className="h-5 w-5" />
+
+                      </Link>
+
+                    </div>
+
+                  </div>
 
                 </div>
 
@@ -194,7 +274,91 @@ export default function ExploreGalleryPage() {
 
           </div>
 
-        </section>
+        ) : (
+
+          /* LIST VIEW */
+          <div className="mt-20 space-y-5">
+
+            {filteredDesigns.map((design, index) => (
+
+              <motion.div
+                key={design.slug}
+                initial={{
+                  opacity: 0,
+                  y: 30,
+                }}
+                whileInView={{
+                  opacity: 1,
+                  y: 0,
+                }}
+                transition={{
+                  duration: 0.4,
+                  delay: index * 0.05,
+                }}
+                viewport={{
+                  once: true,
+                }}
+                className="group flex flex-col gap-6 rounded-[28px] border border-white/10 bg-white/[0.03] p-5 backdrop-blur-2xl transition-all duration-300 hover:border-cyan-400/20 md:flex-row"
+              >
+
+                {/* IMAGE */}
+                <div className="relative overflow-hidden rounded-[24px] md:w-[320px]">
+
+                  <img
+                    src={design.image}
+                    alt={design.title}
+                    className="h-[240px] w-full object-cover transition-transform duration-700 group-hover:scale-105 md:h-full"
+                  />
+
+                </div>
+
+                {/* CONTENT */}
+                <div className="flex flex-1 flex-col justify-between">
+
+                  <div>
+
+                    <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/10 bg-black/30 px-4 py-2 text-sm text-gray-300 backdrop-blur-xl">
+
+                      <Sparkles className="h-4 w-4 text-cyan-400" />
+
+                      {design.category}
+
+                    </div>
+
+                    <h2 className="text-3xl font-bold text-white">
+                      {design.title}
+                    </h2>
+
+                    <p className="mt-4 leading-relaxed text-gray-400">
+                      {design.desc}
+                    </p>
+
+                  </div>
+
+                  {/* BUTTON */}
+                  <div className="mt-8 flex flex-wrap items-center gap-5">
+
+                    <Link
+                      href={`/design/${design.slug}`}
+                      className="group inline-flex items-center gap-3 rounded-2xl bg-white px-6 py-3 text-sm font-semibold text-black transition-all duration-300 hover:scale-[1.03]"
+                    >
+
+                      Explore Design
+
+                      <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
+
+                    </Link>
+
+                  </div>
+
+                </div>
+
+              </motion.div>
+            ))}
+
+          </div>
+
+        )}
 
       </div>
 
