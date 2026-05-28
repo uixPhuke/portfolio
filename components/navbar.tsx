@@ -8,10 +8,10 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 
 const navItems = [
-  { label: "About", href: "#" },
+  { label: "About", href: "/#about" },
   { label: "Projects", href: "#" },
   { label: "Freelancing", href: "#" },
-  { label: "Design", href: "#" },
+  { label: "Design", href: "/design" },
   
 ]
 
@@ -27,7 +27,7 @@ export default function Navbar() {
             <FaGithub className="h-7 w-7 text-white" />
           </Link>
 
-          <nav className="hidden lg:flex items-center gap-6">
+          <h2 className="hidden lg:flex items-center gap-6">
             {navItems.map((item) => (
               <Link
                 key={item.label}
@@ -37,7 +37,7 @@ export default function Navbar() {
                 {item.label}
               </Link>
             ))}
-          </nav>
+          </h2>
         </div>
 
         {/* RIGHT */}
@@ -47,16 +47,18 @@ export default function Navbar() {
             className="w-[260px] border-white/10 bg-white/5 text-white placeholder:text-gray-400"
           />
 
-          <Button
+          {/* <Button
             variant="ghost"
             className="text-gray-300 hover:bg-white/10 hover:text-white"
           >
             Admin
-          </Button>
+          </Button> */}
 
-          <Button className="border border-white/20 bg-transparent text-white hover:bg-white hover:text-black">
-            Connect
-          </Button>
+          <Link href="/contact">
+  <Button className="bg-white text-black hover:bg-gray-200">
+    Connect
+  </Button>
+</Link>
         </div>
 
         {/* MOBILE BUTTON */}
@@ -90,13 +92,15 @@ export default function Navbar() {
             </nav>
 
             <div className="flex flex-col gap-2 pt-4">
-              <Button variant="ghost" className="justify-start text-gray-300">
+             {/* <Button variant="ghost" className="justify-start text-gray-300">
                 Admin
-              </Button>
+              </Button>*/}
 
-              <Button className="bg-white text-black hover:bg-gray-200">
-                Connect
-              </Button>
+              <Link href="/contact">
+  <Button className="border border-white/20 bg-transparent text-white hover:bg-white hover:text-black">
+    Connect
+  </Button>
+</Link>
             </div>
           </div>
         </div>

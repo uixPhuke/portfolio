@@ -29,7 +29,8 @@ export default function Hero() {
       <div className="absolute inset-0">
         {/* MAIN GLOW */}
         <div className="absolute left-1/2 top-[-200px] h-[500px] w-[1000px] -translate-x-1/2 rounded-full bg-blue-800 blur-[180px]" />
-
+ {/* GRID */}
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.025)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.025)_1px,transparent_1px)] bg-[size:80px_80px]" />
         {/* DARK OVERLAY */}
         <div className="absolute inset-0 " />
       </div>
@@ -39,6 +40,10 @@ export default function Hero() {
         style={{ opacity, y, scale }}
         className="relative z-10 max-w-4xl"
       >
+        {/* CHIP */}
+          <div className="mb-8 inline-flex rounded-full border border-white/10 bg-white/[0.03] px-5 py-2 text-sm text-gray-300 backdrop-blur-xl">
+            Full Stack Developer • UI/UX Designer
+          </div>
         <h1 className="text-5xl font-bold leading-tight tracking-tight md:text-7xl">
           Exploring the Future
         </h1>

@@ -7,17 +7,24 @@ import AboutCard from "@/components/about-card"
 import Landing from "@/components/landing"
 import Skills from "@/components/skills"
 import Footer from "@/components/footer"
+import Explore from "@/components/explore"
+import ScrollToTop from "@/components/scrollToTop"
 
 export default function Home() {
   return (
+
     <main className="bg-[#0d1117] text-white">
-      <Navbar />
-      <Landing/>
+     
+      <Hero />
+      <Showcase />
+      
      <AboutCard />
       <Brands />
       <Services />
       <Skills />
-      <Footer/>
+      <Explore />
+      
+      
     </main>
   )
 }

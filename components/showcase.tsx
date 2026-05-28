@@ -80,7 +80,7 @@ export default function Showcase() {
   return (
     <section
       ref={ref}
-      className="relative -mt-[30vh] overflow-hidden bg-[#0d1117] pb-20"
+      className="relative -mt-[30vh] overflow-hidden bg-[#0d1117] pb-20 border-b border-white/10"
     >
       {/* BACKGROUND */}
       <div className="absolute inset-0">

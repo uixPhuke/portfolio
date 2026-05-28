@@ -265,11 +265,11 @@ export default function Skills() {
                       <div className="absolute inset-0 bg-gradient-to-br from-violet-500/10 via-transparent to-cyan-500/5" />
 
                       {/* TITLE */}
-                      <div className="relative z-10 mb-8 flex items-center gap-4">
+                      <div className="relative z-10 mb-6 flex items-center gap-4">
 
                         <div className="h-px flex-1 bg-gradient-to-r from-violet-500/60 to-transparent" />
 
-                        <h3 className="text-xl font-semibold">
+                        <h3 className="text-lg font-semibold">
                           {left.title}
                         </h3>
 
@@ -277,7 +277,7 @@ export default function Skills() {
                       </div>
 
                       {/* SKILLS */}
-                      <div className="relative z-10 grid grid-cols-2 gap-4">
+                      <div className="relative z-10 grid grid-cols-4 gap-3">
 
                         {left.skills.map((skill, index) => {
                           const Icon = skill.icon
@@ -289,7 +289,7 @@ export default function Skills() {
                                 y: -4,
                                 scale: 1.02,
                               }}
-                              className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] p-4 backdrop-blur-xl"
+                              className=" group relative overflow-hidden rounded-xl border border-white/10 bg-white/[0.03] p-3 backdrop-blur-xl"
                             >
 
                               {/* HOVER LIGHT */}
@@ -306,15 +306,15 @@ export default function Skills() {
                                   ease: "easeInOut",
                                   delay: index * 0.1,
                                 }}
-                                className={`text-4xl ${skill.color}`}
+                                className={`text-2xl ${skill.color}`}
                               >
                                 <Icon />
                               </motion.div>
 
                               {/* NAME */}
-                              <h4 className="mt-3 text-base font-semibold">
+                              <p className="mt-2 text-sm font-medium">
                                 {skill.name}
-                              </h4>
+                              </p>
 
                             </motion.div>
                           )
@@ -348,11 +348,11 @@ export default function Skills() {
                       <div className="absolute inset-0 bg-gradient-to-br from-fuchsia-500/10 via-transparent to-blue-500/5" />
 
                       {/* TITLE */}
-                      <div className="relative z-10 mb-8 flex items-center gap-4">
+                      <div className="relative z-10 mb-6 flex items-center gap-4">
 
                         <div className="h-px flex-1 bg-gradient-to-r from-fuchsia-500/60 to-transparent" />
 
-                        <h3 className="text-xl font-semibold">
+                        <h3 className="text-lg font-semibold">
                           {right.title}
                         </h3>
 
@@ -360,7 +360,7 @@ export default function Skills() {
                       </div>
 
                       {/* SKILLS */}
-                      <div className="relative z-10 grid grid-cols-2 gap-4">
+                      <div className="relative z-10 grid grid-cols-2 gap-3">
 
                         {right.skills.map((skill, index) => {
                           const Icon = skill.icon
@@ -372,7 +372,7 @@ export default function Skills() {
                                 y: -4,
                                 scale: 1.02,
                               }}
-                              className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] p-4 backdrop-blur-xl"
+                              className="group relative overflow-hidden rounded-xl border border-white/10 bg-white/[0.03] p-3 backdrop-blur-xl"
                             >
 
                               {/* HOVER LIGHT */}
@@ -389,13 +389,13 @@ export default function Skills() {
                                   ease: "easeInOut",
                                   delay: index * 0.1,
                                 }}
-                                className={`text-4xl ${skill.color}`}
+                                className={`text-2xl ${skill.color}`}
                               >
                                 <Icon />
                               </motion.div>
 
                               {/* NAME */}
-                              <h4 className="mt-3 text-base font-semibold">
+                              <h4 className="mt-2 text-sm font-medium">
                                 {skill.name}
                               </h4>
 
