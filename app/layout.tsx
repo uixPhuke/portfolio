@@ -41,17 +41,18 @@ export default function RootLayout({
           text-white
           antialiased
         `}
-      >
+      ><ScrollToTop />
 
         <Navbar />
         
 
         <main className="pt-16">
+          
           {children}
         </main>
 
         <Footer />
-        <ScrollToTop />
+        
 
       </body>
     </html>
