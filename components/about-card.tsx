@@ -7,6 +7,10 @@ import {
   FaInstagram,
   FaTwitter,
 } from "react-icons/fa"
+import PdfModal from "./pdfModal"
+import { GrResume } from "react-icons/gr"
+import ResumeModal from "./resume-Modal"
+import Link from "next/link"
 
 export default function AboutCard() {
   return (
@@ -84,6 +88,22 @@ export default function AboutCard() {
                 <div className="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_12px_#4ade80]" />
                 Available for freelance
               </div>
+{/* ROLES */}
+<div className="mt-6 flex flex-wrap items-center justify-center gap-3">
+
+  <div className="rounded-md border border-cyan-400/20 bg-cyan-500/10 px-4 py-2 text-xs font-medium uppercase tracking-wider text-cyan-300 backdrop-blur-xl">
+    Full Stack Developer
+  </div>
+
+  <div className="rounded-md border border-violet-400/20 bg-violet-500/10 px-4 py-2 text-xs font-medium uppercase tracking-wider text-violet-300 backdrop-blur-xl">
+    Graphic Designer
+  </div>
+
+  <div className="rounded-md border border-pink-400/20 bg-pink-500/10 px-4 py-2 text-xs font-medium uppercase tracking-wider text-pink-300 backdrop-blur-xl">
+    UI/UX Designer
+  </div>
+
+</div>
 
               {/* SOCIALS */}
               <div className="mt-8 flex items-center gap-5">
@@ -125,11 +145,7 @@ export default function AboutCard() {
             {/* RIGHT SIDE */}
             <div>
 
-              {/* SMALL TAG */}
-              <div className="mb-6 inline-flex rounded-full border border-violet-500/20 bg-violet-500/10 px-5 py-2 text-sm text-violet-300 backdrop-blur-xl">
-                About Me
-              </div>
-
+              
               {/* TITLE */}
               <h2 className="text-5xl font-bold leading-tight md:text-6xl">
                 Hi, I’m
@@ -138,6 +154,7 @@ export default function AboutCard() {
                   Ruhon Borah
                 </span>
               </h2>
+              
 
               {/* DESCRIPTION */}
               <p className="mt-8 text-lg leading-relaxed text-gray-400">
@@ -188,14 +205,17 @@ export default function AboutCard() {
               {/* BUTTONS */}
               {/* BUTTONS */}
 <div className="mt-12 flex flex-col items-center justify-center gap-5 sm:flex-row">
-
+<Link href="/contact">
   <button className="rounded-full bg-gradient-to-r from-violet-500 to-fuchsia-500 px-8 py-4 font-medium text-white shadow-[0_0_40px_rgba(139,92,246,0.4)] transition-all duration-300 hover:scale-105">
     Let’s Work Together
   </button>
+</Link>
 
-  <button className="rounded-full border border-white/10 bg-white/[0.03] px-8 py-4 font-medium backdrop-blur-xl transition-all duration-300 hover:bg-white hover:text-black">
-    Download Resume
-  </button>
+<ResumeModal
+  title="Ruhon Borah Resume"
+  description="Full Stack Developer & UI/UX Designer"
+  pdfUrl="/resume.pdf"
+/>
 
 </div>
             </div>
