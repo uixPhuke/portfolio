@@ -16,32 +16,41 @@ import {
 } from "lucide-react"
 
 export default function DesignGalleryPage() {
-
+   
   const [search, setSearch] = useState("")
   const [view, setView] = useState("grid")
   const [sort, setSort] = useState("all")
+ 
+
+  // 👇 ADD HERE
+  console.log("sort =", sort)
+  console.log("designs =", designs)
 
   const filteredDesigns = useMemo(() => {
+    const query = search.trim().toLowerCase()
 
     return designs.filter((design) => {
-
-      const query = search.toLowerCase()
-
       const matchesSearch =
+        query === "" ||
         design.title.toLowerCase().includes(query) ||
         design.desc.toLowerCase().includes(query) ||
-        design.category.toLowerCase().includes(query)
+        design.category.toLowerCase().includes(query) ||
+        design.tech.some((tech) =>
+          tech.toLowerCase().includes(query)
+        )
 
-      const matchesSort =
-        sort === "all"
-          ? true
-          : design.category === sort
+      const matchesCategory =
+        sort === "all" ||
+        design.category.trim().toLowerCase() ===
+          sort.trim().toLowerCase()
 
-      return matchesSearch && matchesSort
-
+      return matchesSearch && matchesCategory
     })
-
   }, [search, sort])
+
+  console.log("filtered =", filteredDesigns)
+
+  
 
   return (
     <main className="relative min-h-screen overflow-hidden bg-[#050816] px-6 py-24 text-white">
@@ -102,85 +111,103 @@ export default function DesignGalleryPage() {
         </div>
 
         {/* TOOLBAR */}
-        <div className="mt-16 flex justify-center lg:justify-end">
+{/* TOP TOOLBAR */}
+<div className="mt-16 flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
 
-          <div className="flex w-full flex-col gap-3 rounded-[28px] border border-white/10 bg-white/[0.03] p-3 backdrop-blur-2xl sm:w-auto sm:flex-row sm:items-center">
+  {/* LEFT SIDE */}
+  <div className="flex flex-wrap items-center gap-3">
 
-            {/* LEFT */}
-            <div className="flex items-center gap-3">
+    <div className="flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-5 py-3 backdrop-blur-xl">
+      <LayoutGrid className="h-4 w-4 text-cyan-400" />
 
-              {/* VIEW */}
-              <div className="flex items-center rounded-2xl border border-white/10 bg-[#0B1220]/80 p-1">
+      <span className="text-sm text-gray-300">
+        <span className="font-semibold text-white">
+          {filteredDesigns.length}
+        </span>{" "}
+        Design{filteredDesigns.length !== 1 ? "s" : ""} Found
+      </span>
+    </div>
 
-                <button
-                  onClick={() => setView("grid")}
-                  className={`flex h-10 w-10 items-center justify-center rounded-xl transition-all duration-300 ${
-                    view === "grid"
-                      ? "bg-white text-black"
-                      : "text-gray-400 hover:text-white"
-                  }`}
-                >
-                  <LayoutGrid className="h-4 w-4" />
-                </button>
+    <div className="flex items-center gap-2 rounded-full border border-cyan-400/20 bg-cyan-500/10 px-5 py-3 backdrop-blur-xl">
+      <Sparkles className="h-4 w-4 animate-pulse text-cyan-400" />
 
-                <button
-                  onClick={() => setView("list")}
-                  className={`flex h-10 w-10 items-center justify-center rounded-xl transition-all duration-300 ${
-                    view === "list"
-                      ? "bg-white text-black"
-                      : "text-gray-400 hover:text-white"
-                  }`}
-                >
-                  <Rows3 className="h-4 w-4" />
-                </button>
+      <span className="text-xs font-medium uppercase tracking-wider text-cyan-200">
+        {sort === "all" ? "All Categories" : sort}
+      </span>
+    </div>
 
-              </div>
+  </div>
 
-              {/* SORT */}
-              <div className="relative">
+  {/* RIGHT SIDE */}
+  <div className="flex w-full flex-col gap-3 rounded-[28px] border border-white/10 bg-white/[0.03] p-3 backdrop-blur-2xl sm:w-auto sm:flex-row sm:items-center">
 
-                <select
-                  value={sort}
-                  onChange={(e) => setSort(e.target.value)}
-                  className="h-10 appearance-none rounded-2xl border border-white/10 bg-[#0B1220]/80 px-4 pr-10 text-sm text-gray-300 outline-none transition-all duration-300 focus:border-cyan-400/40"
-                >
+    {/* VIEW */}
+    <div className="flex items-center gap-3">
 
-                  <option value="all">All</option>
+      <div className="flex items-center rounded-2xl border border-white/10 bg-[#0B1220]/80 p-1">
 
-                  <option value="saas">SaaS</option>
+        <button
+          onClick={() => setView("grid")}
+          className={`flex h-10 w-10 items-center justify-center rounded-xl transition-all duration-300 ${
+            view === "grid"
+              ? "bg-white text-black"
+              : "text-gray-400 hover:text-white"
+          }`}
+        >
+          <LayoutGrid className="h-4 w-4" />
+        </button>
 
-                  <option value="dashboard">Dashboard</option>
+        <button
+          onClick={() => setView("list")}
+          className={`flex h-10 w-10 items-center justify-center rounded-xl transition-all duration-300 ${
+            view === "list"
+              ? "bg-white text-black"
+              : "text-gray-400 hover:text-white"
+          }`}
+        >
+          <Rows3 className="h-4 w-4" />
+        </button>
 
-                  <option value="portfolio">Portfolio</option>
+      </div>
 
-                  <option value="branding">Branding</option>
+      <div className="relative">
 
-                </select>
+        <select
+          value={sort}
+          onChange={(e) => setSort(e.target.value)}
+          className="h-10 appearance-none rounded-2xl border border-white/10 bg-[#0B1220]/80 px-4 pr-10 text-sm text-gray-300 outline-none transition-all duration-300 focus:border-cyan-400/40"
+        >
+          <option value="all">All</option>
+          <option value="saas">SaaS</option>
+          <option value="dashboard">Dashboard</option>
+          <option value="portfolio">Portfolio</option>
+          <option value="branding">Branding</option>
+        </select>
 
-                <SlidersHorizontal className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-500" />
+        <SlidersHorizontal className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-500" />
 
-              </div>
+      </div>
 
-            </div>
+    </div>
 
-            {/* SEARCH */}
-            <div className="relative flex-1 sm:min-w-[260px]">
+    {/* SEARCH */}
+    <div className="relative flex-1 sm:min-w-[260px]">
 
-              <Search className="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-500" />
+      <Search className="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-500" />
 
-              <input
-                type="text"
-                placeholder="Search designs..."
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                className="h-10 w-full rounded-2xl border border-white/10 bg-[#0B1220]/80 pl-11 pr-4 text-sm text-white outline-none transition-all duration-300 placeholder:text-gray-500 focus:border-cyan-400/40"
-              />
+      <input
+        type="text"
+        placeholder="Search designs..."
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+        className="h-10 w-full rounded-2xl border border-white/10 bg-[#0B1220]/80 pl-11 pr-4 text-sm text-white outline-none transition-all duration-300 placeholder:text-gray-500 focus:border-cyan-400/40"
+      />
 
-            </div>
+    </div>
 
-          </div>
+  </div>
 
-        </div>
+</div>
 
         {/* GRID */}
         {view === "grid" ? (
@@ -190,6 +217,7 @@ export default function DesignGalleryPage() {
             {filteredDesigns.map((design, index) => (
 
               <motion.div
+              layout
                 key={design.slug}
                 initial={{
                   opacity: 0,
@@ -279,6 +307,21 @@ export default function DesignGalleryPage() {
           /* LIST VIEW */
           <div className="mt-20 space-y-5">
 
+            
+            {filteredDesigns.length === 0 && (
+  <div className="col-span-full flex flex-col items-center justify-center py-24 text-center">
+    <Sparkles className="mb-4 h-10 w-10 text-cyan-400" />
+
+    <h3 className="text-2xl font-bold text-white">
+      No Designs Found
+    </h3>
+
+    <p className="mt-2 text-gray-400">
+      Try another category or search term.
+    </p>
+  </div>
+)}
+
             {filteredDesigns.map((design, index) => (
 
               <motion.div
@@ -317,13 +360,21 @@ export default function DesignGalleryPage() {
 
                   <div>
 
-                    <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/10 bg-black/30 px-4 py-2 text-sm text-gray-300 backdrop-blur-xl">
+                    <div className="absolute left-5 top-5 z-20">
+  <motion.div
+    whileHover={{
+      scale: 1.08,
+      y: -2,
+    }}
+    className="inline-flex items-center gap-2 rounded-full border border-cyan-400/20 bg-black/60 px-4 py-2 backdrop-blur-xl"
+  >
+    <Sparkles className="h-3.5 w-3.5 animate-pulse text-cyan-400" />
 
-                      <Sparkles className="h-4 w-4 text-cyan-400" />
-
-                      {design.category}
-
-                    </div>
+    <span className="text-xs font-medium uppercase tracking-wider text-cyan-200">
+      {design.category}
+    </span>
+  </motion.div>
+</div>
 
                     <h2 className="text-3xl font-bold text-white">
                       {design.title}
