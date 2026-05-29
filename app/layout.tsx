@@ -20,8 +20,11 @@ const syne = Syne({
 })
 
 export const metadata: Metadata = {
-  title: "Rohan Borah",
+  title: "Ruhon Borah",
   description: "Portfolio Website",
+  icons: {
+    icon: "/1.png",
+  },
 }
 
 export default function RootLayout({
