@@ -3,6 +3,7 @@
 import Link from "next/link"
 import { motion } from "framer-motion"
 import { useMemo, useState } from "react"
+import {projects} from "@/app/data/projects"
 
 import {
   ArrowUpRight,
@@ -12,85 +13,12 @@ import {
   SlidersHorizontal,
   LayoutGrid,
   Rows3,
+  Eye,
 } from "lucide-react"
 
 import { FaGithub } from "react-icons/fa"
 
-const projects = [
-  {
-    title: "Foodeyez",
-    category: "platform",
-    tech: ["Wix", "JavaScript", "Velo"],
-    desc:
-      "Implemented dynamic server-side functionalities, enhancing the website’s interactivity and responsiveness.",
-    image: "/projects/foodeyez.webp",
-    live: "#",
-    github: "#",
-  },
 
-  {
-    title: "UiX E-Commerce",
-    category: "commerce",
-    tech: [
-      "React.js",
-      "Node.js",
-      "Express.js",
-      "MongoDB",
-      "Tailwind",
-    ],
-    desc:
-      "Built a scalable e-commerce platform with secure authentication, REST APIs, responsive UI, and premium shopping experience.",
-    image: "/projects/ecommerce.webp",
-    live: "#",
-    github: "#",
-  },
-
-  {
-    title: "School Management System",
-    category: "dashboard",
-    tech: [
-      "Python",
-      "Django",
-      "SQLite",
-      "Laravel",
-    ],
-    desc:
-      "Developed multi-role dashboards for Admin, Teacher, and Student management with database integration and backend architecture.",
-    image: "/projects/school.webp",
-    live: "#",
-    github: "#",
-  },
-
-  {
-    title: "UiX Masterclass",
-    category: "saas",
-    tech: [
-      "React.js",
-      "Tailwind",
-      "Vite.js",
-    ],
-    desc:
-      "Advanced learning platform focused on MERN Stack, DSA, and creative tools with modern educational experience.",
-    image: "/projects/masterclass.webp",
-    live: "#",
-    github: "#",
-  },
-
-  {
-    title: "Restaurant Reservation",
-    category: "platform",
-    tech: [
-      "PHP",
-      "JavaScript",
-      "MySQL",
-    ],
-    desc:
-      "Created a complete reservation system with booking workflows, database management, and user-friendly experience.",
-    image: "/projects/restaurant.webp",
-    live: "#",
-    github: "#",
-  },
-]
 
 export default function ProjectsPage() {
 
@@ -187,7 +115,36 @@ export default function ProjectsPage() {
 
         {/* TOP TOOLBAR */}
 
-<div className="mt-16 flex justify-center lg:justify-end">
+<div className="mt-16 flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+  {/* RESULTS + CATEGORY */}
+<div className="flex flex-wrap items-center gap-3">
+
+  {/* PROJECTS FOUND */}
+  <div className="flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-5 py-3 backdrop-blur-xl">
+
+    <LayoutGrid className="h-4 w-4 text-cyan-400" />
+
+    <span className="text-sm text-gray-300">
+      <span className="font-semibold text-white">
+        {filteredProjects.length}
+      </span>{" "}
+      Project{filteredProjects.length !== 1 ? "s" : ""} Found
+    </span>
+
+  </div>
+
+  {/* ACTIVE CATEGORY */}
+  <div className="flex items-center gap-2 rounded-full border border-cyan-400/20 bg-cyan-500/10 px-5 py-3 backdrop-blur-xl">
+
+    <Sparkles className="h-4 w-4 animate-pulse text-cyan-400" />
+
+    <span className="text-xs font-medium uppercase tracking-wider text-cyan-200">
+      {sort === "all" ? "All Projects" : sort}
+    </span>
+
+  </div>
+
+</div>
 
   <div className="flex w-full flex-col gap-3 rounded-[28px] border border-white/10 bg-white/[0.03] p-3 backdrop-blur-2xl sm:w-auto sm:flex-row sm:items-center">
 
@@ -351,25 +308,50 @@ export default function ProjectsPage() {
           </div>
 
           {/* OVERLAY */}
-          <div className="absolute inset-x-0 bottom-0 z-10 p-8">
+        <div className="absolute inset-x-0 bottom-0 p-6">
 
-            <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/10 bg-black/30 px-4 py-2 text-sm text-gray-300 backdrop-blur-xl">
+  <div className="flex items-end justify-between gap-5">
 
-              <Layers3 className="h-4 w-4 text-cyan-400" />
+    <div>
 
-              {project.category}
+      <h2 className="text-3xl font-bold">
+        {project.title}
+      </h2>
 
-            </div>
+      <p className="mt-2 text-gray-300">
+        {project.desc}
+      </p>
 
-            <h2 className="text-4xl font-bold text-white">
-              {project.title}
-            </h2>
+    </div>
 
-            <p className="mt-4 max-w-xl leading-relaxed text-gray-300">
-              {project.desc}
-            </p>
+    {/* ACTIONS */}
+   <div className="flex items-center gap-2 lg:hidden">
 
-          </div>
+  <Link
+    href={project.live}
+    className="flex h-11 w-11 items-center justify-center rounded-2xl border border-white/10 bg-black/40 text-white backdrop-blur-xl"
+  >
+    <Eye className="h-5 w-5" />
+  </Link>
+
+  <Link
+    href={`/project/${project.slug}`}
+    className="flex h-11 w-11 items-center justify-center rounded-2xl bg-white text-black"
+  >
+    <ArrowUpRight className="h-5 w-5" />
+  </Link>
+
+  <Link
+    href={project.github}
+    className="flex h-11 w-11 items-center justify-center rounded-2xl border border-white/10 bg-black/40 text-white backdrop-blur-xl"
+  >
+    <FaGithub className="h-5 w-5" />
+  </Link>
+
+</div>
+  </div>
+
+</div>
 
         </motion.div>
 
@@ -411,6 +393,16 @@ export default function ProjectsPage() {
 
             <Link
               href={project.live}
+              className="group inline-flex items-center gap-3 rounded-2xl bg-white px-7 py-4 text-lg font-semibold text-black transition-all duration-300 hover:scale-[1.03]"
+            >
+
+              Live Preview
+
+              <ArrowUpRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
+
+            </Link>
+            <Link
+              href={`/project/${project.slug}`}
               className="group inline-flex items-center gap-3 rounded-2xl bg-white px-7 py-4 text-lg font-semibold text-black transition-all duration-300 hover:scale-[1.03]"
             >
 
@@ -468,35 +460,73 @@ export default function ProjectsPage() {
             <div>
 
               {/* TOP */}
-              <div className="flex flex-wrap items-center justify-between gap-4">
+            {/* TOP */}
+<div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
 
-                <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-4 py-2 text-sm text-gray-300">
+  <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-4 py-2 text-sm text-gray-300">
 
-                  <Layers3 className="h-4 w-4 text-cyan-400" />
+    <Layers3 className="h-4 w-4 text-cyan-400" />
 
-                  {project.category}
+    {project.category}
 
-                </div>
+  </div>
 
-                <div className="flex items-center gap-3">
+<div className="flex shrink-0 items-center gap-2">
 
-                  <Link
-                    href={project.live}
-                    className="flex h-11 w-11 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.03] text-white transition-all duration-300 hover:border-cyan-400/30 hover:bg-white hover:text-black"
-                  >
-                    <ArrowUpRight className="h-5 w-5" />
-                  </Link>
+  {/* LIVE */}
+  <Link
+    href={project.live}
+    className="
+      flex h-10 w-10 items-center justify-center
+      rounded-xl border border-white/10
+      bg-white/[0.03]
+      text-white
+      transition-all duration-300
+      hover:border-cyan-400/30
+      hover:bg-white
+      hover:text-black
+    "
+  >
+    <Eye className="h-4 w-4" />
+  </Link>
 
-                  <Link
-                    href={project.github}
-                    className="flex h-11 w-11 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.03] text-white transition-all duration-300 hover:border-cyan-400/30 hover:bg-white hover:text-black"
-                  >
-                    <FaGithub className="h-5 w-5" />
-                  </Link>
+  {/* EXPLORE */}
+  <Link
+    href={`/project/${project.slug}`}
+    className="
+      flex h-10 w-10 items-center justify-center
+      rounded-xl border border-white/10
+      bg-white/[0.03]
+      text-white
+      transition-all duration-300
+      hover:border-cyan-400/30
+      hover:bg-white
+      hover:text-black
+    "
+  >
+    <ArrowUpRight className="h-4 w-4" />
+  </Link>
 
-                </div>
+  {/* GITHUB */}
+  <Link
+    href={project.github}
+    className="
+      flex h-10 w-10 items-center justify-center
+      rounded-xl border border-white/10
+      bg-white/[0.03]
+      text-white
+      transition-all duration-300
+      hover:border-cyan-400/30
+      hover:bg-white
+      hover:text-black
+    "
+  >
+    <FaGithub className="h-4 w-4" />
+  </Link>
 
-              </div>
+</div>
+
+</div>
 
               {/* TITLE */}
               <h2 className="mt-6 text-4xl font-bold text-white">

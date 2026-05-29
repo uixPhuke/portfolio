@@ -10,7 +10,7 @@ import { Input } from "@/components/ui/input"
 const navItems = [
   { label: "About", href: "/#about" },
   { label: "Projects", href: "/project" },
-  { label: "Freelancing", href: "#" },
+  { label: "Freelancing", href: "/freelancing" },
   { label: "Design", href: "/design" },
   
 ]
