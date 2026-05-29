@@ -2,8 +2,8 @@ export const designs = [
   {
     slug: "luxury-portfolio",
     title: "Luxury Portfolio",
-    category: "Portfolio",
-    image: "/designs/design1.webp",
+    category: "portfolio",
+    image: "/designs/design1.jpeg",
 
     desc:
       "Modern cinematic portfolio experience with immersive interactions.",
@@ -35,8 +35,8 @@ export const designs = [
   {
     slug: "ai-saas-landing",
     title: "AI SaaS Landing",
-    category: "SaaS",
-    image: "/designs/design2.webp",
+    category: "saas",
+    image: "/designs/design1.jpeg",
 
     desc:
       "Scalable AI startup landing interface.",
@@ -68,8 +68,8 @@ export const designs = [
   {
     slug: "finance-dashboard",
     title: "Finance Dashboard",
-    category: "Dashboard",
-    image: "/designs/design3.webp",
+    category: "dashboard",
+    image: "/designs/design1.jpeg",
 
     desc:
       "Minimal premium analytics dashboard.",
@@ -101,8 +101,8 @@ export const designs = [
   {
     slug: "creative-agency",
     title: "Creative Agency",
-    category: "Branding",
-    image: "/designs/design4.webp",
+    category: "branding",
+    image: "/designs/design1.jpeg",
 
     desc:
       "Immersive creative agency showcase.",
