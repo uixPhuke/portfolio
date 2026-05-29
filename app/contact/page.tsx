@@ -71,7 +71,7 @@ export default function Contact() {
 
         {/* HERO */}
         <div className="mx-auto max-w-5xl text-center">
-
+ {/* 
           <div className="mb-8 flex items-center justify-center gap-5">
 
             <div className="h-px w-20 bg-cyan-400/40" />
@@ -82,7 +82,7 @@ export default function Contact() {
 
             <div className="h-px w-20 bg-cyan-400/40" />
 
-          </div>
+          </div>*/}
 
           <h1 className="text-5xl font-extrabold leading-none tracking-tight md:text-7xl">
 

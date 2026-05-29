@@ -68,7 +68,7 @@ export default function FreelancingGalleryPage() {
         {/* HERO */}
         <div className="mx-auto max-w-5xl text-center">
 
-          <div className="mb-8 flex items-center justify-center gap-5">
+          {/*  <div className="mb-8 flex items-center justify-center gap-5">
             <div className="h-px w-20 bg-cyan-400/40" />
 
             <p className="text-xs font-medium uppercase tracking-[0.5em] text-cyan-300">
@@ -76,7 +76,7 @@ export default function FreelancingGalleryPage() {
             </p>
 
             <div className="h-px w-20 bg-cyan-400/40" />
-          </div>
+          </div> */}
 
           <h1 className="text-5xl font-extrabold leading-none tracking-tight md:text-7xl">
 
