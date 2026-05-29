@@ -3,12 +3,15 @@
 import Link from "next/link"
 import { motion } from "framer-motion"
 
+
 import {
   ArrowLeft,
   ArrowUpRight,
   Sparkles,
   Layers3,
   Monitor,
+  CheckCircle2,
+  Code2,
 } from "lucide-react"
 
 export default function DesignDetailsClient({
@@ -160,6 +163,139 @@ export default function DesignDetailsClient({
           </div>
 
         </section>
+        {/* FEATURES & TECHNOLOGY */}
+<section className="mt-24">
+
+  <div className="grid gap-8 lg:grid-cols-2">
+
+    {/* FEATURES */}
+    <motion.div
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6 }}
+      className="rounded-[32px] border border-white/10 bg-white/[0.03] p-8 backdrop-blur-2xl"
+    >
+
+      <div className="mb-8 flex items-center gap-3">
+
+        <div
+          className={`flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-r ${design.color}`}
+        >
+          <CheckCircle2 className="h-6 w-6 text-white" />
+        </div>
+
+        <div>
+          <p className="text-sm uppercase tracking-[0.25em] text-cyan-300">
+            Features
+          </p>
+
+          <h3 className="text-2xl font-bold text-white">
+            Key Highlights
+          </h3>
+        </div>
+
+      </div>
+
+      <div className="space-y-4">
+
+        {design.features.map((feature, index) => (
+
+          <motion.div
+            key={feature}
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{
+              delay: index * 0.1,
+            }}
+            whileHover={{
+              x: 6,
+            }}
+            className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.03] px-5 py-4"
+          >
+
+            <CheckCircle2 className="h-5 w-5 text-cyan-400" />
+
+            <span className="text-gray-300">
+              {feature}
+            </span>
+
+          </motion.div>
+
+        ))}
+
+      </div>
+
+    </motion.div>
+
+    {/* TECHNOLOGY */}
+    <motion.div
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6, delay: 0.15 }}
+      className="rounded-[32px] border border-white/10 bg-white/[0.03] p-8 backdrop-blur-2xl"
+    >
+
+      <div className="mb-8 flex items-center gap-3">
+
+        <div
+          className={`flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-r ${design.color}`}
+        >
+          <Code2 className="h-6 w-6 text-white" />
+        </div>
+
+        <div>
+          <p className="text-sm uppercase tracking-[0.25em] text-cyan-300">
+            Technology
+          </p>
+
+          <h3 className="text-2xl font-bold text-white">
+            Tech Stack
+          </h3>
+        </div>
+
+      </div>
+
+      <div className="flex flex-wrap gap-4">
+
+        {design.tech.map((tech, index) => (
+
+          <motion.div
+            key={tech}
+            initial={{
+              opacity: 0,
+              scale: 0.8,
+            }}
+            whileInView={{
+              opacity: 1,
+              scale: 1,
+            }}
+            viewport={{ once: true }}
+            transition={{
+              delay: index * 0.08,
+            }}
+            whileHover={{
+              scale: 1.08,
+              y: -4,
+            }}
+            className={`rounded-2xl border border-white/10 bg-gradient-to-r ${design.color} px-5 py-3 text-sm font-medium text-white shadow-lg`}
+          >
+
+            {tech}
+
+          </motion.div>
+
+        ))}
+
+      </div>
+
+    </motion.div>
+
+  </div>
+
+</section>
 
 {/* PINTEREST SHOWCASE */}
 <section className="mt-24">
