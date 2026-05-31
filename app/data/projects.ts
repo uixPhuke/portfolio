@@ -4,7 +4,7 @@ export const projects = [
     title: "Foodeyez",
     category: "platform",
 
-    image: "/projects/foodeyez.webp",
+    image: "1",
 
     desc:
       "Implemented dynamic server-side functionalities, enhancing the website’s interactivity and responsiveness.",
@@ -23,14 +23,15 @@ export const projects = [
     tech: ["Wix", "JavaScript", "Velo"],
 
     images: [
-      "/projects/foodeyez.webp",
-      "/projects/foodeyez.webp",
-      "/projects/foodeyez.webp",
+      "1",
+      "2",
+      "3",
+      "cover"
     ],
 
     color: "from-cyan-500 to-blue-500",
 
-    live: "#",
+    live: "https://foodeyez.com",
     github: "#",
   },
 
@@ -74,6 +75,50 @@ export const projects = [
     live: "#",
     github: "#",
   },
+  {
+    slug: "phixel",
+    title: "Phixel",
+    category: "E commerce",
+
+    image: "phixel-1",
+
+    desc:
+      "Built a scalable e-commerce platform with secure authentication, REST APIs, responsive UI, and premium shopping experience.",
+
+    longDesc:
+      "A complete MERN stack e-commerce solution featuring authentication, product management, order processing, responsive design, and scalable backend architecture.",
+
+    features: [
+      "User Authentication",
+      "Admin Dashboard",
+      "Product Management",
+      "Cart & Wishlist",
+      "Responsive Design",
+    ],
+
+    tech: [
+      "React.js",
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+      "Tailwind CSS",
+    ],
+
+    images: [
+      "phixel-1",
+      "phixel-2",
+      "phixel-3",
+      "phixel-4",
+      "phixel-5",
+      "phixel-6",
+      
+    ],
+
+    color: "from-emerald-500 to-cyan-500",
+
+    live: "https://phixel.vercel.app",
+    github: "https://github.com/uixPhuke/phixel",
+  },
 
   {
     slug: "school-management-system",
@@ -111,7 +156,7 @@ export const projects = [
 
     color: "from-violet-500 to-fuchsia-500",
 
-    live: "#",
+    live: "https://school-management-system.com",
     github: "#",
   },
 
