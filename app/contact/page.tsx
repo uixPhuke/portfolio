@@ -1,18 +1,19 @@
 "use client"
-
+import { useState, useEffect } from "react"
 import {
   FaGithub,
   FaLinkedin,
   FaInstagram,
   FaTwitter,
 } from "react-icons/fa"
-import { useEffect } from "react"
+
 
 import {
   Clock3,
   ShieldCheck,
   Sparkles,
 } from "lucide-react"
+import { CheckCircle2, Loader2 } from "lucide-react"
 
 import { motion } from "framer-motion"
 
@@ -43,6 +44,51 @@ export default function Contact() {
      useEffect(() => {
       window.scrollTo(0, 0)
     }, [])
+    const [name, setName] = useState("")
+const [email, setEmail] = useState("")
+const [message, setMessage] = useState("")
+
+
+const [loading, setLoading] = useState(false)
+const [success, setSuccess] = useState(false)
+const handleSubmit = async () => {
+  if (!name || !email || !message) return
+
+  try {
+    setLoading(true)
+    setSuccess(false)
+
+    const response = await fetch("/api/contact", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name,
+        email,
+        message,
+      }),
+    })
+
+    const data = await response.json()
+//this is the response from the backend api route. It will have a success property that we can use to show a success message to the user.
+    if (data.success) {
+      setSuccess(true)
+
+      setName("")
+      setEmail("")
+      setMessage("")
+
+      setTimeout(() => {
+        setSuccess(false)
+      }, 4000)
+    }
+  } catch (error) {
+    console.error(error)
+  } finally {
+    setLoading(false)
+  }
+}
   return (
     <section className="relative overflow-hidden bg-[#050816] px-6 py-28 text-white">
 
@@ -358,11 +404,13 @@ export default function Contact() {
                     Full Name
                   </label>
 
-                  <input
-                    type="text"
-                    placeholder="John Doe"
-                    className="h-14 w-full rounded-xl border border-white/10 bg-white/[0.02] px-5 text-[15px] outline-none transition-all duration-300 placeholder:text-gray-500 focus:border-cyan-400/40"
-                  />
+                 <input
+  type="text"
+  placeholder="Your Name"
+  value={name}
+  onChange={(e) => setName(e.target.value)}
+  className="h-14 w-full rounded-xl border border-white/10 bg-white/[0.02] px-5 text-[15px] outline-none transition-all duration-300 placeholder:text-gray-500 focus:border-cyan-400/40"
+/>
 
                 </div>
 
@@ -372,11 +420,13 @@ export default function Contact() {
                     Email Address
                   </label>
 
-                  <input
-                    type="email"
-                    placeholder="you@mail.com"
-                    className="h-14 w-full rounded-xl border border-white/10 bg-white/[0.02] px-5 text-[15px] outline-none transition-all duration-300 placeholder:text-gray-500 focus:border-cyan-400/40"
-                  />
+                 <input
+  type="email"
+  placeholder="you@mail.com"
+  value={email}
+  onChange={(e) => setEmail(e.target.value)}
+  className="h-14 w-full rounded-xl border border-white/10 bg-white/[0.02] px-5 text-[15px] outline-none transition-all duration-300 placeholder:text-gray-500 focus:border-cyan-400/40"
+/>
 
                 </div>
 
@@ -387,19 +437,62 @@ export default function Contact() {
                   </label>
 
                   <textarea
-                    rows={6}
-                    placeholder="Write your message..."
-                    className="w-full rounded-xl border border-white/10 bg-white/[0.02] p-5 text-[15px] outline-none transition-all duration-300 placeholder:text-gray-500 focus:border-cyan-400/40"
-                  />
+  rows={6}
+  placeholder="Your message..."
+  value={message}
+  onChange={(e) => setMessage(e.target.value)}
+  className="w-full rounded-xl border border-white/10 bg-white/[0.02] p-5 text-[15px] outline-none transition-all duration-300 placeholder:text-gray-500 focus:border-cyan-400/40"
+/>
 
                 </div>
 
                 {/* BUTTON */}
-                <button className="mt-2 h-14 w-full rounded-xl bg-gradient-to-r from-cyan-500 via-blue-500 to-violet-500 text-[15px] font-semibold transition-all duration-300 hover:scale-[1.01] hover:shadow-[0_0_40px_rgba(59,130,246,0.35)]">
+               <button
+  onClick={handleSubmit}
+  disabled={loading || success}
+  className={`
+    mt-2
+    h-14
+    w-full
+    rounded-xl
+    text-[15px]
+    font-semibold
+    transition-all
+    duration-500
 
-                  Submit Request
+    ${
+      success
+        ? "bg-green-500 text-white shadow-[0_0_30px_rgba(34,197,94,0.4)]"
+        : "bg-gradient-to-r from-cyan-500 via-blue-500 to-violet-500 text-white hover:scale-[1.01] hover:shadow-[0_0_40px_rgba(59,130,246,0.35)]"
+    }
 
-                </button>
+    disabled:cursor-not-allowed
+  `}
+>
+  <span className="flex items-center justify-center gap-2">
+
+    {loading && (
+      <Loader2
+  className="h-5 w-5"
+  style={{
+    animation: "spin 1s linear infinite",
+  }}
+/>
+    )}
+
+    {success && !loading && (
+      <CheckCircle2 className="h-5 w-5 animate-bounce  text-green-400" />
+    )}
+
+    {loading
+      ? "Sending..."
+      : success
+      ? "Message Sent Successfully"
+      : "Submit Request"}
+
+  </span>
+</button>
+
 
                 <p className="text-center text-sm text-gray-500">
                   No spam. No unnecessary meetings.
