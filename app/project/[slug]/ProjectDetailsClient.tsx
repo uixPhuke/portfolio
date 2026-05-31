@@ -2,6 +2,8 @@
 
 import Link from "next/link"
 import { motion } from "framer-motion"
+import Image from "next/image"
+import { cloudinaryUrl } from "@/app/lib/cloudinary"
 
 import {
   ArrowLeft,
@@ -9,6 +11,7 @@ import {
   Sparkles,
   CheckCircle2,
   Code2,
+  Eye
 } from "lucide-react"
 
 import { FaGithub } from "react-icons/fa"
@@ -88,7 +91,7 @@ export default function ProjectDetailsClient({
                 className={`inline-flex items-center gap-3 rounded-2xl bg-gradient-to-r ${project.color} px-7 py-4 text-sm font-semibold text-white transition-all duration-300 hover:scale-[1.03]`}
               >
                 Live Preview
-                <ArrowUpRight className="h-4 w-4" />
+                <Eye className="h-4 w-4" />
               </Link>
 
               <Link
@@ -118,11 +121,13 @@ export default function ProjectDetailsClient({
             }}
             className="overflow-hidden rounded-[32px] border border-white/10 bg-white/[0.03] backdrop-blur-2xl"
           >
-            <img
-              src={project.image}
-              alt={project.title}
-              className="h-full w-full object-cover"
-            />
+            <Image
+  src={cloudinaryUrl(project.image)}
+  alt={project.title}
+  width={1200}
+  height={800}
+  className="h-[500px] w-full object-cover"
+/>
           </motion.div>
 
         </section>
@@ -398,18 +403,18 @@ export default function ProjectDetailsClient({
         />
 
         {/* Image */}
-        <img
-          src={image}
-          alt={project.title}
-          className="
-            h-full
-            w-full
-            object-cover
-            transition-all
-            duration-700
-            group-hover:scale-110
-          "
-        />
+        <Image
+  src={cloudinaryUrl(image)}
+  alt={project.title}
+  fill
+  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+  className="
+    object-cover
+    transition-all
+    duration-700
+    group-hover:scale-110
+  "
+/>
 
         {/* Overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 transition-all duration-500 group-hover:opacity-100" />
