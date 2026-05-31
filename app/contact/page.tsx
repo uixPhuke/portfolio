@@ -7,6 +7,11 @@ import {
   FaTwitter,
 } from "react-icons/fa"
 
+import {
+  Workflow,
+  Layers3,
+} from "lucide-react"
+
 
 import {
   Clock3,
@@ -116,58 +121,41 @@ const handleSubmit = async () => {
       <div className="relative z-10 mx-auto max-w-7xl">
 
         {/* HERO */}
-        <div className="mx-auto max-w-5xl text-center">
- {/* 
-          <div className="mb-8 flex items-center justify-center gap-5">
+       {/* HERO */}
+<div className="mx-auto max-w-5xl text-center">
 
-            <div className="h-px w-20 bg-cyan-400/40" />
+  <h1 className="text-5xl font-extrabold leading-none tracking-tight md:text-7xl">
+    Let&apos;s Create{" "}
+    <span className="bg-gradient-to-r from-cyan-400 via-blue-500 to-violet-500 bg-clip-text text-transparent">
+      Something Creative.
+    </span>
+  </h1>
 
-            <p className="text-xs font-medium uppercase tracking-[0.5em] text-cyan-300">
-              CONNECT WITH ME
-            </p>
+  <p className="mx-auto mt-10 max-w-4xl text-md leading-relaxed text-gray-400 md:text-md">
+    Every great product begins with a conversation. Whether you're
+    launching a startup, scaling a business, refining an idea, or
+    searching for a creative technology partner, I'm always open to
+    collaborating with ambitious people building meaningful things.
+  </p>
 
-            <div className="h-px w-20 bg-cyan-400/40" />
+  {/* TAGS */}
+  <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
+    {[
+      "Startup Ideas",
+      "Freelance Projects",
+      "Creative Partnerships",
+      "Business Growth",
+    ].map((item) => (
+      <div
+        key={item}
+        className="rounded-full border border-white/10 bg-white/[0.03] px-6 py-3 text-sm text-gray-300 backdrop-blur-xl"
+      >
+        {item}
+      </div>
+    ))}
+  </div>
 
-          </div>*/}
-
-          <h1 className="text-5xl font-extrabold leading-none tracking-tight md:text-7xl">
-
-            Contact{" "}
-
-            <span className="bg-gradient-to-r from-cyan-400 via-blue-500 to-violet-500 bg-clip-text text-transparent">
-              Me.
-            </span>
-
-          </h1>
-
-          <p className="mx-auto mt-10 max-w-4xl text-md leading-relaxed text-gray-400 md:text-md">
-            Reach out to discuss product ideas, collaborations,
-            development opportunities, or even just to have a
-            conversation. Whether it’s tech, business,
-            creativity, or random ideas, I’m always open to
-            meaningful connections and interesting discussions.
-          </p>
-
-          {/* TAGS */}
-          <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
-
-            {[
-              "Tech & Startups",
-              "Freelancing",
-              "Collaborations",
-              "Just Talk :)",
-            ].map((item) => (
-              <div
-                key={item}
-                className="rounded-full border border-white/10 bg-white/[0.03] px-6 py-3 text-sm text-gray-300 backdrop-blur-xl"
-              >
-                {item}
-              </div>
-            ))}
-
-          </div>
-
-        </div>
+</div>
 
         {/* MAIN GRID */}
         <div className="mt-24 grid items-start gap-12 lg:grid-cols-[0.95fr_1.05fr]">
@@ -191,89 +179,98 @@ const handleSubmit = async () => {
           >
 
             {/* BADGE */}
-            <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-5 py-3 text-sm text-gray-300">
+           {/* BADGE */}
+<div className="mb-8 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-5 py-3 text-sm text-gray-300">
 
-              <Sparkles className="h-4 w-4 text-cyan-400" />
+  <Sparkles className="h-4 w-4 text-cyan-400" />
 
-              Premium Development Experience
+  Building Premium Digital Products
 
-            </div>
+</div>
 
-            <h2 className="text-5xl font-bold leading-none md:text-7xl">
+<h2 className="text-5xl font-bold leading-none md:text-7xl">
 
-              Let&apos;s build
+  Ideas Into
 
-              <br />
+  <br />
 
-              <span className="text-white/30">
-                something iconic.
-              </span>
+  <span className="text-white/30">
+    Digital Reality.
+  </span>
 
-            </h2>
+</h2>
 
-            <p className="mt-8 max-w-xl leading-relaxed text-gray-400">
-              Premium digital experiences engineered with
-              performance, scalability, and world-class design.
-            </p>
+<p className="mt-8 max-w-xl leading-relaxed text-gray-400">
+  Combining strategy, design, and development to create products
+  that are visually stunning, technically solid, and built for
+  long-term growth.
+</p>
+
+           
 
             {/* FEATURES */}
             <div className="mt-12 space-y-5">
 
               {/* CARD */}
-              <div className="rounded-[28px] border border-white/10 bg-white/[0.025] p-6 backdrop-blur-2xl">
+              {/* CARD */}
+<div className="rounded-[28px] border border-white/10 bg-white/[0.025] p-6 backdrop-blur-2xl">
 
-                <div className="flex items-start gap-5">
+  <div className="flex items-start gap-5">
 
-                  <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-500/10">
+    <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-500/10">
 
-                    <Clock3 className="h-6 w-6 text-cyan-400" />
+    
+  <Workflow className="h-6 w-6 text-cyan-400" />
 
-                  </div>
+    </div>
 
-                  <div>
+    <div>
 
-                    <h3 className="text-xl font-semibold">
-                      Fast Communication
-                    </h3>
+      <h3 className="text-xl font-semibold">
+        Transparent Collaboration
+      </h3>
 
-                    <p className="mt-2 text-gray-400">
-                      Quick replies, smooth workflow,
-                      zero confusion.
-                    </p>
+      <p className="mt-2 text-gray-400">
+        Clear communication, regular updates,
+        and smooth project execution.
+      </p>
 
-                  </div>
+    </div>
 
-                </div>
+  </div>
 
-              </div>
+</div>
+
+{/* CARD */}
+<div className="rounded-[28px] border border-white/10 bg-white/[0.025] p-6 backdrop-blur-2xl">
+
+  <div className="flex items-start gap-5">
+
+    <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-violet-500/10">
+
+      <Layers3 className="h-6 w-6 text-violet-400" />
+
+    </div>
+
+    <div>
+
+      <h3 className="text-xl font-semibold">
+        Built To Scale
+      </h3>
+
+      <p className="mt-2 text-gray-400">
+        Modern architecture engineered for
+        performance, reliability, and growth.
+      </p>
+
+    </div>
+
+  </div>
+
+</div>
 
               {/* CARD */}
-              <div className="rounded-[28px] border border-white/10 bg-white/[0.025] p-6 backdrop-blur-2xl">
-
-                <div className="flex items-start gap-5">
-
-                  <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-violet-500/10">
-
-                    <ShieldCheck className="h-6 w-6 text-violet-400" />
-
-                  </div>
-
-                  <div>
-
-                    <h3 className="text-xl font-semibold">
-                      Production Ready
-                    </h3>
-
-                    <p className="mt-2 text-gray-400">
-                      Clean architecture with scalability
-                      and premium UX.
-                    </p>
-
-                  </div>
-
-                </div>
-
-              </div>
+             
 
             </div>
 
@@ -319,36 +316,37 @@ const handleSubmit = async () => {
 
             {/* PREMIUM STATS GRID */}
             {/* STATS */}
-        <div className="mt-14 flex flex-wrap gap-12">
+       <div className="mt-14 flex flex-wrap gap-12">
 
-          {[
-            {
-              title: "24h",
-              desc: "Avg response",
-            },
-            {
-              title: "100%",
-              desc: "Client focused",
-            },
-            {
-              title: "Premium",
-              desc: "UI standards",
-            },
-          ].map((item) => (
-            <div key={item.title}>
+  {[
+    {
+      title: "Fast",
+      desc: "Response Time",
+    },
+    {
+      title: "Growth",
+      desc: "Focused Solutions",
+    },
+    {
+      title: "Premium",
+      desc: "Design Quality",
+    },
+  ].map((item) => (
+    <div key={item.title}>
 
-              <p className="text-3xl font-bold">
-                {item.title}
-              </p>
+      <p className="text-3xl font-bold">
+        {item.title}
+      </p>
 
-              <p className="mt-2 text-gray-500">
-                {item.desc}
-              </p>
+      <p className="mt-2 text-gray-500">
+        {item.desc}
+      </p>
 
-            </div>
-          ))}
+    </div>
+  ))}
 
-        </div>
+</div>
+
           </motion.div>
 
           {/* RIGHT */}
