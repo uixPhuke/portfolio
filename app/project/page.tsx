@@ -17,6 +17,8 @@ import {
 } from "lucide-react"
 
 import { FaGithub } from "react-icons/fa"
+import { cloudinaryUrl } from "../lib/cloudinary"
+import Image from "next/image"
 
 
 
@@ -297,11 +299,13 @@ export default function ProjectsPage() {
 
           <div className="relative overflow-hidden">
 
-            <img
-              src={project.image}
-              alt={project.title}
-              className="h-[500px] w-full object-cover transition-transform duration-700 group-hover:scale-105"
-            />
+           <Image
+  src={cloudinaryUrl(project.image)}
+  alt={project.title}
+  width={1200}
+  height={800}
+  className="h-[500px] w-full object-cover transition-transform duration-700 group-hover:scale-105"
+/>
 
             <div className="absolute inset-0 bg-gradient-to-t from-[#050816] via-[#050816]/30 to-transparent" />
 
@@ -324,8 +328,9 @@ export default function ProjectsPage() {
 
     </div>
 
-    {/* ACTIONS */}
-   <div className="flex items-center gap-2 lg:hidden">
+    {/* ACTIONS 
+    
+       <div className="flex items-center gap-2 lg:hidden">
 
   <Link
     href={project.live}
@@ -348,7 +353,8 @@ export default function ProjectsPage() {
     <FaGithub className="h-5 w-5" />
   </Link>
 
-</div>
+</div>*/}
+
   </div>
 
 </div>
@@ -392,13 +398,14 @@ export default function ProjectsPage() {
           <div className="mt-12 flex flex-wrap gap-5">
 
             <Link
+            target="_blank"
               href={project.live}
               className="group inline-flex items-center gap-3 rounded-2xl bg-white px-7 py-4 text-lg font-semibold text-black transition-all duration-300 hover:scale-[1.03]"
             >
 
               Live Preview
 
-              <ArrowUpRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
+              <Eye className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
 
             </Link>
             <Link
@@ -406,7 +413,7 @@ export default function ProjectsPage() {
               className="group inline-flex items-center gap-3 rounded-2xl bg-white px-7 py-4 text-lg font-semibold text-black transition-all duration-300 hover:scale-[1.03]"
             >
 
-              Live Preview
+              Explore
 
               <ArrowUpRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
 
@@ -444,11 +451,13 @@ export default function ProjectsPage() {
           {/* IMAGE */}
           <div className="relative overflow-hidden">
 
-            <img
-              src={project.image}
-              alt={project.title}
-              className="h-[260px] w-full object-cover transition-transform duration-700 group-hover:scale-105 md:h-full"
-            />
+           <Image
+  src={cloudinaryUrl(project.image)}
+  alt={project.title}
+  width={1200}
+  height={800}
+  className="h-[500px] w-full object-cover"
+/>
 
             <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
 
