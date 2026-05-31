@@ -35,46 +35,7 @@ export const projects = [
     github: "#",
   },
 
-  {
-    slug: "uix-ecommerce",
-    title: "UiX E-Commerce",
-    category: "commerce",
-
-    image: "/projects/ecommerce.webp",
-
-    desc:
-      "Built a scalable e-commerce platform with secure authentication, REST APIs, responsive UI, and premium shopping experience.",
-
-    longDesc:
-      "A complete MERN stack e-commerce solution featuring authentication, product management, order processing, responsive design, and scalable backend architecture.",
-
-    features: [
-      "User Authentication",
-      "Admin Dashboard",
-      "Product Management",
-      "Cart & Wishlist",
-      "Responsive Design",
-    ],
-
-    tech: [
-      "React.js",
-      "Node.js",
-      "Express.js",
-      "MongoDB",
-      "Tailwind CSS",
-    ],
-
-    images: [
-      "/projects/ecommerce.webp",
-      "/projects/ecommerce.webp",
-      "/projects/ecommerce.webp",
-    ],
-
-    color: "from-emerald-500 to-cyan-500",
-
-    live: "#",
-    github: "#",
-  },
+ 
   {
     slug: "phixel",
     title: "Phixel",
@@ -118,6 +79,46 @@ export const projects = [
 
     live: "https://phixel.vercel.app",
     github: "https://github.com/uixPhuke/phixel",
+  },
+   {
+    slug: "uix-ecommerce",
+    title: "UiX E-Commerce",
+    category: "commerce",
+
+    image: "/projects/ecommerce.webp",
+
+    desc:
+      "Built a scalable e-commerce platform with secure authentication, REST APIs, responsive UI, and premium shopping experience.",
+
+    longDesc:
+      "A complete MERN stack e-commerce solution featuring authentication, product management, order processing, responsive design, and scalable backend architecture.",
+
+    features: [
+      "User Authentication",
+      "Admin Dashboard",
+      "Product Management",
+      "Cart & Wishlist",
+      "Responsive Design",
+    ],
+
+    tech: [
+      "React.js",
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+      "Tailwind CSS",
+    ],
+
+    images: [
+      "/projects/ecommerce.webp",
+      "/projects/ecommerce.webp",
+      "/projects/ecommerce.webp",
+    ],
+
+    color: "from-emerald-500 to-cyan-500",
+
+    live: "#",
+    github: "#",
   },
 
   {

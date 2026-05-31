@@ -481,7 +481,7 @@ const handleSubmit = async () => {
     )}
 
     {success && !loading && (
-      <CheckCircle2 className="h-5 w-5 animate-bounce  text-green-400" />
+      <CheckCircle2 className="h-5 w-5 animate-bounce  text-green-500" />
     )}
 
     {loading

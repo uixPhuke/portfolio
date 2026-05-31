@@ -6,6 +6,7 @@ import {  Menu, X } from "lucide-react"
 import { FaGithub } from "react-icons/fa";
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
+import Image from "next/image"
 
 const navItems = [
   { label: "About", href: "/#about" },
@@ -24,8 +25,15 @@ export default function Navbar() {
         {/* LEFT */}
         <div className="flex items-center gap-8">
           <Link href="/" className="flex items-center gap-2">
-            <FaGithub className="h-7 w-7 text-white" />
-          </Link>
+  <Image
+    src="/logo.webp"
+    alt="Logo"
+    width={100}
+    height={100}
+    
+    className="h-6 w-14 target:"
+  />
+</Link>
 
           <h2 className="hidden lg:flex items-center gap-6">
             {navItems.map((item) => (
