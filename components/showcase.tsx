@@ -14,28 +14,28 @@ export default function Showcase() {
    */
   const tabs = [
     {
-      name: "Code",
-      image: "/img1.webp",
+      name: "Tshirt",
+      image: "https://res.cloudinary.com/dsn8gtduk/image/upload/v1780589871/img1_hsa7du.webp",
       card: "/img2.webp",
     },
     {
-      name: "Plan",
-      image: "/img3.webp",
+      name: "Detailism",
+      image: "https://res.cloudinary.com/dsn8gtduk/image/upload/v1780589862/img4_att1sl.webp",
       card: "/img1.webp",
     },
     {
-      name: "Collaborate",
-      image: "/img2.webp",
+      name: "Album",
+      image: "https://res.cloudinary.com/dsn8gtduk/image/upload/v1780589861/img2_ykfolq.webp",
       card: "/img3.webp",
     },
     {
-      name: "Automate",
-      image: "/img1.webp",
+      name: "Assets",
+      image: "https://res.cloudinary.com/dsn8gtduk/image/upload/v1780589860/img5_ijwvgn.webp",
       card: "/img2.webp",
     },
     {
       name: "Secure",
-      image: "/img3.webp",
+      image: "https://res.cloudinary.com/dsn8gtduk/image/upload/v1780589859/img3_oi7ove.webp",
       card: "/img1.webp",
     },
   ]
