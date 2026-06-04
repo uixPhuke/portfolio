@@ -76,9 +76,9 @@ export default function ProjectDetailsClient({
               {project.category}
             </div>
 
-            <h1 className="text-4xl font-extrabold leading-tight sm:text-5xl md:text-6xl lg:text-7xl">
+            <p className="text-4xl font-extrabold leading-tight sm:text-5xl md:text-6xl lg:text-7xl">
               {project.title}
-            </h1>
+            </p>
 
             <p className="mt-8 max-w-2xl text-base leading-relaxed text-gray-400 sm:text-lg">
               {project.desc}
