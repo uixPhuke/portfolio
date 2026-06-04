@@ -5,6 +5,7 @@ import { motion } from "framer-motion"
 import { useMemo, useState } from "react"
 
 import { designs } from "@/app/data/designs"
+import Image from "next/image"
 
 import {
   Search,
@@ -14,6 +15,7 @@ import {
   ArrowUpRight,
   Sparkles,
 } from "lucide-react"
+import { cloudinaryUrl } from "../lib/cloudinary"
 
 export default function DesignGalleryPage() {
    
@@ -25,6 +27,16 @@ export default function DesignGalleryPage() {
   // 👇 ADD HERE
   console.log("sort =", sort)
   console.log("designs =", designs)
+  const categories = useMemo(() => {
+  return [
+    "all",
+    ...new Set(
+      designs.map((design) =>
+        design.category.trim().toLowerCase()
+      )
+    ),
+  ]
+}, [])
 
   const filteredDesigns = useMemo(() => {
     const query = search.trim().toLowerCase()
@@ -173,16 +185,16 @@ export default function DesignGalleryPage() {
       <div className="relative">
 
         <select
-          value={sort}
-          onChange={(e) => setSort(e.target.value)}
-          className="h-10 appearance-none rounded-2xl border border-white/10 bg-[#0B1220]/80 px-4 pr-10 text-sm text-gray-300 outline-none transition-all duration-300 focus:border-cyan-400/40"
-        >
-          <option value="all">All</option>
-          <option value="saas">SaaS</option>
-          <option value="dashboard">Dashboard</option>
-          <option value="portfolio">Portfolio</option>
-          <option value="branding">Branding</option>
-        </select>
+  value={sort}
+  onChange={(e) => setSort(e.target.value)}
+  className="h-10 appearance-none rounded-2xl border border-white/10 bg-[#0B1220]/80 px-4 pr-10 text-sm text-gray-300 outline-none transition-all duration-300 focus:border-cyan-400/40"
+>
+  {categories.map((category) => (
+    <option key={category} value={category}>
+      {category.charAt(0).toUpperCase() + category.slice(1)}
+    </option>
+  ))}
+</select>
 
         <SlidersHorizontal className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-500" />
 
@@ -243,11 +255,14 @@ export default function DesignGalleryPage() {
                 {/* IMAGE */}
                 <div className="relative overflow-hidden">
 
-                  <img
-                    src={design.image}
-                    alt={design.title}
-                    className="h-[500px] w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
+                  <Image
+                   src={cloudinaryUrl(design.image)}
+                   alt={design.title}
+                   width={1200}
+                   height={800}
+                   className="h-[500px] w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                 />
+                 
 
                   {/* OVERLAY */}
                   <div className="absolute inset-0 bg-gradient-to-t from-[#050816] via-[#050816]/40 to-transparent" />
@@ -347,11 +362,16 @@ export default function DesignGalleryPage() {
                 {/* IMAGE */}
                 <div className="relative overflow-hidden rounded-[24px] md:w-[320px]">
 
-                  <img
-                    src={design.image}
+                         <Image
+                    src={cloudinaryUrl(design.image)}
                     alt={design.title}
-                    className="h-[240px] w-full object-cover transition-transform duration-700 group-hover:scale-105 md:h-full"
+                    width={1200}
+                    height={800}
+                    className="h-[500px] w-full object-cover transition-transform duration-700 group-hover:scale-105 md:h-full"
                   />
+
+                    
+                  
 
                 </div>
 
