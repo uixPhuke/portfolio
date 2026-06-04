@@ -2,6 +2,8 @@
 
 import Link from "next/link"
 import { motion } from "framer-motion"
+import Image from "next/image"
+import { cloudinaryUrl } from "@/app/lib/cloudinary"
 
 
 import {
@@ -135,11 +137,13 @@ export default function DesignDetailsClient({
             className="overflow-hidden rounded-[32px] border border-white/10 bg-white/[0.03] backdrop-blur-2xl"
           >
 
-            <img
-              src={design.image}
-              alt={design.title}
-              className="h-full w-full object-cover"
-            />
+            <Image
+             src={cloudinaryUrl(design.image)}
+             alt={design.title}
+             width={1200}
+             height={800}
+             className="h-[500px] w-full object-cover"
+           />
 
           </motion.div>
 
@@ -350,11 +354,15 @@ export default function DesignDetailsClient({
         {/* IMAGE */}
         <div className="overflow-hidden">
 
-          <img
-            src={image}
+          
+           <Image
+            src={cloudinaryUrl(image)}
             alt={design.title}
+            width={1200}
+            height={800}
             className="w-full object-cover transition-transform duration-700 group-hover:scale-105"
           />
+         
 
         </div>
 
