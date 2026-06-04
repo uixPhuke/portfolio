@@ -1,7 +1,10 @@
 "use client"
 
 import { motion, useScroll, useTransform } from "framer-motion"
+
+import Link from "next/link"
 import { useRef } from "react"
+import { TypeAnimation } from "react-type-animation";
 
 export default function Hero() {
   const ref = useRef(null)
@@ -40,18 +43,35 @@ export default function Hero() {
         style={{ opacity, y, scale }}
         className="relative z-10 max-w-4xl"
       >
+       
         {/* CHIP */}
-          <div className="mb-8 inline-flex rounded-full border border-white/10 bg-white/[0.03] px-5 py-2 text-sm text-gray-300 backdrop-blur-xl">
-            Full Stack Developer • UI/UX Designer
-          </div>
+         <div className="inline-flex rounded-full border border-white/10 bg-white/[0.03] px-5 py-2 text-sm text-gray-300 backdrop-blur-xl">
+  <TypeAnimation
+    sequence={[
+      "Full Stack Developer",
+      2000,
+      "UI/UX Designer",
+      2000,
+      "Graphic Designer",
+      2000,
+    ]}
+    wrapper="span"
+    speed={50}
+    repeat={Infinity}
+  />
+</div>
         <h1 className="text-5xl font-bold leading-tight tracking-tight md:text-7xl">
-          Exploring the Future
+          Ruhon
+          <span className="bg-gradient-to-r from-violet-400 to-cyan-400 bg-clip-text text-transparent">
+            {" "}Borah
+          </span>
         </h1>
 
-        <p className="mt-6 text-lg text-gray-300 md:text-xl">
-          A full Stack Developer with a passion for building innovative
-          solutions and exploring the latest technologies.
-        </p>
+        <p className="mt-6 text-lg text-gray-300 md:text-xl max-w-2xl mx-auto">
+  Crafting exceptional digital experiences through modern web development,
+  intuitive UI/UX design, and impactful visual storytelling. Building products
+  that blend performance, aesthetics, and innovation.
+</p>
 
         <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
           {/*<input
@@ -59,10 +79,11 @@ export default function Hero() {
             placeholder="Enter your email"
             className="h-14 w-full rounded-md border border-white/10 bg-white px-4 text-black sm:w-[320px]"
           />*/}
-
+<Link href="https://github.com/uixPhuke" target="_blank" rel="noopener noreferrer">
           <button className="h-14 rounded-md bg-blue-700 px-8 font-semibold text-white hover:bg-green-700">
             GitHub
           </button>
+</Link>
 
           <button className="h-14 rounded-md border border-white/20 px-8 font-semibold text-white hover:bg-white hover:text-black">
             Try GPT
