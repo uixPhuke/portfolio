@@ -85,7 +85,7 @@ export const projects = [
     title: "UiX E-Commerce",
     category: "commerce",
 
-    image: "/projects/ecommerce.webp",
+    image: "uixcom1",
 
     desc:
       "Built a scalable e-commerce platform with secure authentication, REST APIs, responsive UI, and premium shopping experience.",
@@ -110,15 +110,61 @@ export const projects = [
     ],
 
     images: [
-      "/projects/ecommerce.webp",
-      "/projects/ecommerce.webp",
-      "/projects/ecommerce.webp",
+      "uixcom1",
+      "uixcom2",
+      "uixcom3",
+      "uixcom4",
+      
     ],
 
     color: "from-emerald-500 to-cyan-500",
 
-    live: "#",
-    github: "#",
+    live: "https://uix-store.vercel.app",
+    github: "https://github.com/uixPhuke/uix-ecom",
+  },
+  {
+    slug: "portfolio2.0",
+    title: "portfolio2.0",
+    category: "portfolio",
+
+    image: "port2",
+
+    desc:
+      "Built a scalable e-commerce platform with secure authentication, REST APIs, responsive UI, and premium shopping experience.",
+
+    longDesc:
+      "A complete MERN stack e-commerce solution featuring authentication, product management, order processing, responsive design, and scalable backend architecture.",
+
+    features: [
+      
+      "Pinterest grid",
+      
+     
+      "Responsive Design",
+    ],
+
+    tech: [
+      "Next.js",
+      "Framer Motion",
+      
+      "cloudinary",
+      "post css",
+    ],
+
+    images: [
+      "port1",
+      "port2",
+      "port3",
+      "port4",
+      "port5",
+      "port6",
+      
+    ],
+
+    color: "from-emerald-500 to-cyan-500",
+
+    live: "https://uix-store.vercel.app",
+    github: "https://github.com/uixPhuke/uix-ecom",
   },
 
   {
