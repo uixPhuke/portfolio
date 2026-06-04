@@ -14,29 +14,35 @@ import { motion } from "framer-motion"
 const socials = [
   {
     icon: FaGithub,
-    href: "https://github.com/yourusername",
+    target: "_blank",
+    href: "https://github.com/uixPhuke",
   },
   {
     icon: FaLinkedinIn,
-    href: "https://linkedin.com/in/yourusername",
+    target: "_blank",
+    href: "https://linkedin.com/in/rohan-ine",
   },
   {
     icon: FaInstagram,
-    href: "https://instagram.com/yourusername",
+    target: "_blank",
+    href: "https://instagram.com/byphixel",
   },
   {
     icon: FaTwitter,
-    href: "https://x.com/yourusername",
+    target: "_blank",
+    href: "https://x.com/rohanphuke",
   },
 ]
 
 const navLinks = [
-  "Home",
-  "About",
-  "Projects",
-  "Skills",
-  "Services",
-  "Contact",
+  { name: "Home", href: "/" },
+  { name: "About", href: "/#about" },
+  { name: "Projects", href: "/projects" },
+  { name: "Skills", href: "/#skills" },
+  { name: "Freelance", href: "/freelancing" },
+  { name: "Design", href: "/design" },
+  { name: "Experience", href: "/#experience" },
+  { name: "Contact", href: "/contact" },
 ]
 
 export default function Footer() {
@@ -84,7 +90,7 @@ export default function Footer() {
               }}
               className="text-4xl font-bold tracking-tight"
             >
-              Rohan
+              Ruhon
               <span className="bg-gradient-to-r from-violet-400 to-cyan-400 bg-clip-text text-transparent">
                 {" "}Borah
               </span>
@@ -106,18 +112,16 @@ export default function Footer() {
             </h3>
 
             <div className="grid grid-cols-2 gap-y-4 text-sm text-gray-400">
-
-              {navLinks.map((item) => (
-                <Link
-                  key={item}
-                  href="/"
-                  className="transition-all duration-300 hover:translate-x-1 hover:text-white"
-                >
-                  {item}
-                </Link>
-              ))}
-
-            </div>
+  {navLinks.map((item) => (
+    <Link
+      key={item.name}
+      href={item.href}
+      className="transition-all duration-300 hover:translate-x-1 hover:text-white"
+    >
+      {item.name}
+    </Link>
+  ))}
+</div>
 
           </div>
 
@@ -175,7 +179,7 @@ export default function Footer() {
         <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-white/5 pt-6 text-xs text-gray-500 md:flex-row">
 
           <p className="font-mono">
-            rohan{" "}
+            ruhon{" "}
             <span className="text-violet-400">
               
             </span>{" "}
@@ -183,8 +187,8 @@ export default function Footer() {
           </p>
 
           <p className="text-center">
-            © {new Date().getFullYear()} Rohan Borah ·
-            Crafted with modern technologies.
+            © {new Date().getFullYear()} Ruhon Borah ·
+            Crafted with Love.
           </p>
 
           <p>
