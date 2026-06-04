@@ -45,7 +45,7 @@ export default function Hero() {
       >
        
         {/* CHIP */}
-         <div className="inline-flex rounded-full border border-white/10 bg-white/[0.03] px-5 py-2 text-sm text-gray-300 backdrop-blur-xl">
+         <div className="  inline-flex rounded-full border border-white/10 bg-white/[0.03] px-5 py-2 text-sm text-gray-300 backdrop-blur-xl">
   <TypeAnimation
     sequence={[
       "Full Stack Developer",
