@@ -53,7 +53,7 @@ const services = [
 
 export default function Services() {
   return (
-    <section className="relative overflow-hidden bg-black py-40 text-white">
+    <section  className="relative overflow-hidden bg-black py-40 text-white">
 
       {/* BACKGROUND */}
       <div className="absolute inset-0">
