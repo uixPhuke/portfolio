@@ -179,7 +179,7 @@ const skillGroups = [
 
 export default function Skills() {
   return (
-    <section className="relative overflow-hidden py-28">
+    <section id="skills" className="relative overflow-hidden py-28">
 
       {/* BACKGROUND */}
       <div className="absolute inset-0">
