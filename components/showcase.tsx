@@ -14,6 +14,11 @@ export default function Showcase() {
    */
   const tabs = [
     {
+      name: "Code",
+      image: "https://res.cloudinary.com/dsn8gtduk/image/upload/v1780589859/img6_finufz.webp",
+      card: "/img2.webp",
+    },
+    {
       name: "Tshirt",
       image: "https://res.cloudinary.com/dsn8gtduk/image/upload/v1780589871/img1_hsa7du.webp",
       card: "/img2.webp",
@@ -34,7 +39,7 @@ export default function Showcase() {
       card: "/img2.webp",
     },
     {
-      name: "Secure",
+      name: "Mockup",
       image: "https://res.cloudinary.com/dsn8gtduk/image/upload/v1780589859/img3_oi7ove.webp",
       card: "/img1.webp",
     },
