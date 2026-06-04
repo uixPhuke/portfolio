@@ -53,7 +53,7 @@ const experiences = [
 
 export default function Experience() {
   return (
-    <section className="relative overflow-hidden py-32">
+    <section id="experience" className="relative overflow-hidden py-32">
 
       {/* BACKGROUND */}
       <div className="absolute inset-0">
