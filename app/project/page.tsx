@@ -28,7 +28,16 @@ export default function ProjectsPage() {
   const [sort, setSort] = useState("all")
   const [view, setView] = useState("grid")
 
-
+const categories = useMemo(() => {
+  return [
+    "all",
+    ...new Set(
+      projects.map((project) =>
+        project.category.trim().toLowerCase()
+      )
+    ),
+  ]
+}, [])
 
   const filteredProjects = useMemo(() => {
 
@@ -189,15 +198,11 @@ export default function ProjectsPage() {
           className="h-10 appearance-none rounded-2xl border border-white/10 bg-[#0B1220]/80 px-4 pr-10 text-sm text-gray-300 outline-none transition-all duration-300 hover:border-cyan-400/20 focus:border-cyan-400/40"
         >
 
-          <option value="all">All Projects</option>
-
-          <option value="saas">SaaS</option>
-
-          <option value="dashboard">Dashboard</option>
-
-          <option value="commerce">Commerce</option>
-
-          <option value="platform">Platform</option>
+         {categories.map((category) => (
+    <option key={category} value={category}>
+      {category.charAt(0).toUpperCase() + category.slice(1)}
+    </option>
+  ))}
 
         </select>
 
@@ -366,9 +371,10 @@ export default function ProjectsPage() {
 
           <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-5 py-3 text-sm text-gray-300 backdrop-blur-xl">
 
-            <Sparkles className="h-4 w-4 text-cyan-400" />
+           
+            <Layers3 className="h-4 w-4 text-cyan-400" />
 
-            Premium Product Experience
+    {project.category}
 
           </div>
 
