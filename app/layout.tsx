@@ -20,12 +20,58 @@ const syne = Syne({
 })
 
 export const metadata: Metadata = {
-  title: "Ruhon Borah",
-  description: "Portfolio Website",
+  metadataBase: new URL("https://ruhon-borah.vercel.app"),
+
+  title: {
+    default: "Ruhon Borah | Full Stack Developer & UI/UX Designer",
+    template: "%s | Ruhon Borah",
+  },
+
+  description:
+    "Ruhon Borah is a Full Stack Developer, UI/UX Designer, and Graphic Designer specializing in modern web applications, user experiences, branding, and digital products.",
+
+  keywords: [
+    "Ruhon Borah",
+    "Full Stack Developer",
+    "UI UX Designer",
+    "Graphic Designer",
+    "React Developer",
+    "Next.js Developer",
+    "MERN Stack Developer",
+    "Portfolio",
+  ],
+
+  authors: [{ name: "Ruhon Borah" }],
+  creator: "Ruhon Borah",
+
   icons: {
     icon: "/1.png",
   },
-}
+
+  openGraph: {
+    title: "Ruhon Borah | Full Stack Developer & UI/UX Designer",
+    description:
+      "Portfolio showcasing development, UI/UX design, branding, and creative work.",
+    url: "https://ruhon-borah.vercel.app",
+    siteName: "Ruhon Borah Portfolio",
+    images: [
+      {
+        url: "/profile.png",
+        width: 1200,
+        height: 630,
+      },
+    ],
+    type: "website",
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "Ruhon Borah",
+    description:
+      "Full Stack Developer, UI/UX Designer, and Graphic Designer.",
+    images: ["/profile.png"],
+  },
+};
 
 export default function RootLayout({
   children,
@@ -45,6 +91,24 @@ export default function RootLayout({
           antialiased
         `}
       ><ScrollToTop />
+      <script
+  type="application/ld+json"
+  dangerouslySetInnerHTML={{
+    __html: JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Person",
+      name: "Ruhon Borah",
+      jobTitle: "Full Stack Developer",
+      url: "https://yourdomain.com",
+      sameAs: [
+        "https://github.com/uixPhuke",
+        "https://linkedin.com/in/rohan-ine",
+        "https://instagram.com/byphixel",
+        "https://x.com/rohanphuke",
+      ],
+    }),
+  }}
+/>
 
         <Navbar />
         
