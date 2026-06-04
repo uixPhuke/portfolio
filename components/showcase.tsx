@@ -103,12 +103,11 @@ export default function Showcase() {
 
       {/* CONTENT */}
       <motion.div
-        style={{ opacity, y, scale }}
-        className="relative mx-auto max-w-7xl px-6"
-      >
+  style={{ opacity, y, scale }}
+  className="relative mx-auto max-w-5xl px-6 "
+>
         {/* GLASS CONTAINER */}
-        <div className="relative overflow-hidden rounded-[40px] border border-white/10 bg-white/[0.04] p-10 backdrop-blur-3xl shadow-[0_0_120px_rgba(139,92,246,0.15)] md:p-20">
-
+       <div className="relative overflow-hidden rounded-[40px] border border-white/10 bg-white/[0.04] p-4 md:p-10 backdrop-blur-3xl">
           {/* INNER GLOW */}
           <div className="absolute inset-0 bg-gradient-to-b from-violet-500/10 via-transparent to-cyan-500/5" />
 
@@ -124,7 +123,7 @@ export default function Showcase() {
                 duration: 0.35,
                 ease: "easeOut",
               }}
-              className="w-full rounded-2xl"
+              className="w-full rounded-2xl object-cover"
             />
           </div>
 
@@ -175,7 +174,7 @@ export default function Showcase() {
   </div>
 </div>
         <p className="mt-6 text-center text-lg text-gray-400">
-          Showcasing the power of AI in transforming ideas into reality .
+         Transforming concepts into intelligent digital experiences.
         </p>
       </motion.div>
     </section>
