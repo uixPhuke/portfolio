@@ -15,6 +15,7 @@ import {
   CheckCircle2,
   Code2,
 } from "lucide-react"
+import Masonry from "react-masonry-css"
 
 export default function DesignDetailsClient({
   design,
@@ -302,13 +303,13 @@ export default function DesignDetailsClient({
 </section>
 
 {/* PINTEREST SHOWCASE */}
+{/* PINTEREST SHOWCASE */}
 <section className="mt-24">
 
   {/* HEADER */}
   <div className="mb-10 flex items-end gap-6">
 
     <div>
-
       <p className="text-sm uppercase tracking-[0.3em] text-cyan-300">
         Gallery
       </p>
@@ -316,15 +317,22 @@ export default function DesignDetailsClient({
       <h2 className="mt-3 text-3xl font-bold text-white sm:text-4xl">
         Visual Showcase
       </h2>
-
     </div>
 
     <div className="hidden h-px flex-1 bg-white/10 lg:block" />
 
   </div>
 
-  {/* MASONRY */}
-  <div className="columns-1 gap-5 sm:columns-2 lg:columns-3 [column-fill:_balance]">
+  {/* MASONRY GALLERY */}
+  <Masonry
+    breakpointCols={{
+      default: 3,
+      1024: 2,
+      640: 1,
+    }}
+    className="flex gap-5"
+    columnClassName="space-y-5"
+  >
 
     {design.images.map((image, index) => (
 
@@ -339,42 +347,73 @@ export default function DesignDetailsClient({
           y: 0,
         }}
         viewport={{
-          once: true,margin: "-100px" 
+          once: true,
+          margin: "-80px",
         }}
         transition={{
-          duration: 0.3,
-          delay: index * 0.02,
+          duration: 0.45,
+          ease: "easeOut",
         }}
-
-        whileHover={{
-          y: -6,
-        }}
-        className="group relative mb-5 overflow-hidden rounded-[28px] border border-white/10 bg-white/[0.03] break-inside-avoid backdrop-blur-2xl"
+        className="
+          group
+          relative
+          overflow-hidden
+          rounded-[28px]
+          border
+          border-white/10
+          bg-white/[0.03]
+          cursor-pointer
+        "
       >
 
         {/* IMAGE */}
         <div className="overflow-hidden">
 
-          
-           <Image
+          <Image
             src={cloudinaryUrl(image)}
             alt={design.title}
-            width={1200}
-            height={800}
-            className="w-full object-cover transition-transform duration-700 group-hover:scale-105"
+            width={800}
+            height={1000}
+            sizes="
+              (max-width: 640px) 100vw,
+              (max-width: 1024px) 50vw,
+              33vw
+            "
+            loading="lazy"
+            className="
+              w-full
+              h-auto
+              object-cover
+              transition-transform
+              duration-500
+              group-hover:scale-105
+              will-change-transform
+            "
           />
-         
 
         </div>
 
         {/* OVERLAY */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+        <div
+          className="
+            absolute
+            inset-0
+            bg-gradient-to-t
+            from-black/60
+            via-transparent
+            to-transparent
+            opacity-0
+            transition-opacity
+            duration-300
+            group-hover:opacity-100
+          "
+        />
 
       </motion.div>
 
     ))}
 
-  </div>
+  </Masonry>
 
 </section>
 
