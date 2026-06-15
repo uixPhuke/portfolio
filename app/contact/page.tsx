@@ -11,6 +11,7 @@ import {
   Workflow,
   Layers3,
 } from "lucide-react"
+import { ArrowUpRight, X } from "lucide-react"
 
 
 import {
@@ -388,7 +389,7 @@ const handleSubmit = async () => {
                 </div>
 
                 <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.03]">
-                  ↗
+                  <ArrowUpRight className="h-6 w-6 text-cyan-400" />
                 </div>
 
               </div>
