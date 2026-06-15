@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { motion } from "framer-motion"
-
+import Masonry from "react-masonry-css"
 import {
   ArrowLeft,
   ArrowUpRight,
@@ -99,13 +99,15 @@ export default function FreelancingDetailsClient({
             transition={{ duration: 0.7 }}
             className="overflow-hidden rounded-[32px] border border-white/10 bg-white/[0.03] backdrop-blur-2xl"
           >
-            <Image
-              src={cloudinaryUrl(service.image)}
-              alt={service.title}
-              width={1200}
-             height={800}
-              className="h-full w-full object-cover"
-            />
+           <Image
+  src={cloudinaryUrl(service.image)}
+  alt={service.title}
+  width={1200}
+  height={800}
+  priority
+  sizes="(max-width:1024px) 100vw, 50vw"
+  className="h-full w-full object-cover"
+/>
           </motion.div>
 
         </section>
@@ -234,68 +236,114 @@ export default function FreelancingDetailsClient({
         </section>
 
         {/* GALLERY */}
-        <section className="mt-24">
+       <section className="mt-24">
 
-          <div className="mb-10">
-            <p className="text-sm uppercase tracking-[0.3em] text-cyan-300">
-              Portfolio
-            </p>
+  <div className="mb-10">
+    <p className="text-sm uppercase tracking-[0.3em] text-cyan-300">
+      Portfolio
+    </p>
 
-            <h2 className="mt-3 text-3xl font-bold text-white sm:text-4xl">
-              Service Showcase
-            </h2>
-          </div>
+    <h2 className="mt-3 text-3xl font-bold text-white sm:text-4xl">
+      Service Showcase
+    </h2>
+  </div>
 
-       
+ {/* <motion.div
+    initial="hidden"
+    whileInView="show"
+    viewport={{ once: true, margin: "-100px" }}
+    variants={{
+      hidden: {},
+      show: {
+        transition: {
+          staggerChildren: 0.05,
+        },
+      },
+    }}
+  >
+    */}
+   <Masonry
+  breakpointCols={{
+    default: 3,
+    1024: 2,
+    640: 1,
+  }}
+  className="flex gap-5"
+  columnClassName="space-y-5"
+>
+  {service.images.map((image, index) => (
+    <motion.div
+      key={index}
+      initial={{
+        opacity: 0,
+        y: 40,
+      }}
+      whileInView={{
+        opacity: 1,
+        y: 0,
+      }}
+      viewport={{
+        once: true,
+        margin: "-80px",
+      }}
+      transition={{
+        duration: 0.45,
+        ease: "easeOut",
+      }}
+      className="
+        group
+        relative
+        overflow-hidden
+        rounded-[28px]
+        border
+        border-white/10
+        bg-white/[0.03]
+        cursor-pointer
+      "
+    >
+      <div className="overflow-hidden">
+        <Image
+          src={cloudinaryUrl(image)}
+          alt={service.title}
+          width={800}
+          height={1000}
+          sizes="
+            (max-width: 640px) 100vw,
+            (max-width: 1024px) 50vw,
+            33vw
+          "
+          loading="lazy"
+          className="
+            w-full
+            h-auto
+            object-cover
+            transition-transform
+            duration-500
+            group-hover:scale-105
+          "
+        />
+      </div>
 
-           <div className="columns-1 gap-5 sm:columns-2 lg:columns-3 [column-fill:_balance]">
+      <div
+        className="
+          absolute
+          inset-0
+          bg-gradient-to-t
+          from-black/60
+          via-transparent
+          to-transparent
+          opacity-0
+          transition-opacity
+          duration-300
+          group-hover:opacity-100
+        "
+      />
+    </motion.div>
+  ))}
+</Masonry>
+ {/*</motion.div>*/} 
 
-    {service.images.map((image, index) => (
-
-      <motion.div
-        key={index}
-        initial={{
-          opacity: 0,
-          y: 40,
-        }}
-        whileInView={{
-          opacity: 1,
-          y: 0,
-        }}
-        viewport={{
-          once: true,margin: "-100px" 
-        }}
-        transition={{
-          duration: 0.3,
-          delay: index * 0.02,
-        }}
-
-        whileHover={{
-          y: -6,
-        }}
-        className="group relative mb-5 overflow-hidden rounded-[28px] border border-white/10 bg-white/[0.03] break-inside-avoid backdrop-blur-2xl"
-      >
-
-        {/* IMAGE */}
-        <div className="overflow-hidden">
-                <Image
-                            src={cloudinaryUrl(image)}
-                            alt={service.title}
-                            width={1200}
-                            height={800}
-                  className="w-full object-cover transition-transform duration-700 group-hover:scale-105"
-             />   </div>
-
-        {/* OVERLAY */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-
-      </motion.div>
-
-            ))}
-
-          </div>
-
-        </section>
+</section>
 
       </div>
 
