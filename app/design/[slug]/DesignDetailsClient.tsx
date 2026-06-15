@@ -324,7 +324,7 @@ export default function DesignDetailsClient({
   </div>
 
   {/* MASONRY */}
-  <div className="columns-1 gap-5 sm:columns-2 lg:columns-3">
+  <div className="columns-1 gap-5 sm:columns-2 lg:columns-3 [column-fill:_balance]">
 
     {design.images.map((image, index) => (
 
@@ -339,12 +339,13 @@ export default function DesignDetailsClient({
           y: 0,
         }}
         viewport={{
-          once: true,
+          once: true,margin: "-100px" 
         }}
         transition={{
-          duration: 0.5,
-          delay: index * 0.05,
+          duration: 0.3,
+          delay: index * 0.02,
         }}
+
         whileHover={{
           y: -6,
         }}
