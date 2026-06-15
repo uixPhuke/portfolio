@@ -19,7 +19,7 @@ async function getPublicIds() {
     });
 
     const laxmiImages = result.resources.filter(
-      (asset) => asset.asset_folder === "portfolio/freelance/barrel"
+      (asset) => asset.asset_folder === "design-imgs"
     );
 
     publicIds.push(...laxmiImages.map((asset) => asset.public_id));
