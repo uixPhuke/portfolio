@@ -10,7 +10,9 @@ import {
   CheckCircle2,
   Code2,
 } from "lucide-react"
-
+import Image from "next/image"
+import { cloudinaryUrl } from "@/app/lib/cloudinary"
+import { useEffect, useState } from "react";
 export default function FreelancingDetailsClient({
   service,
 }: {
@@ -26,7 +28,8 @@ export default function FreelancingDetailsClient({
     color: string
     images: string[]
   }
-}) {
+}
+) {
   return (
     <main className="relative min-h-screen overflow-hidden bg-[#050816] text-white">
 
@@ -96,9 +99,11 @@ export default function FreelancingDetailsClient({
             transition={{ duration: 0.7 }}
             className="overflow-hidden rounded-[32px] border border-white/10 bg-white/[0.03] backdrop-blur-2xl"
           >
-            <img
-              src={service.image}
+            <Image
+              src={cloudinaryUrl(service.image)}
               alt={service.title}
+              width={1200}
+             height={800}
               className="h-full w-full object-cover"
             />
           </motion.div>
@@ -241,20 +246,51 @@ export default function FreelancingDetailsClient({
             </h2>
           </div>
 
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+       
 
-            {service.images.map((image, index) => (
-              <motion.div
-                key={index}
-                whileHover={{ y: -6 }}
-                className="group overflow-hidden rounded-[28px] border border-white/10 bg-white/[0.03]"
-              >
-                <img
-                  src={image}
-                  alt={service.title}
+           <div className="columns-1 gap-5 sm:columns-2 lg:columns-3 [column-fill:_balance]">
+
+    {service.images.map((image, index) => (
+
+      <motion.div
+        key={index}
+        initial={{
+          opacity: 0,
+          y: 40,
+        }}
+        whileInView={{
+          opacity: 1,
+          y: 0,
+        }}
+        viewport={{
+          once: true,margin: "-100px" 
+        }}
+        transition={{
+          duration: 0.3,
+          delay: index * 0.02,
+        }}
+
+        whileHover={{
+          y: -6,
+        }}
+        className="group relative mb-5 overflow-hidden rounded-[28px] border border-white/10 bg-white/[0.03] break-inside-avoid backdrop-blur-2xl"
+      >
+
+        {/* IMAGE */}
+        <div className="overflow-hidden">
+                <Image
+                            src={cloudinaryUrl(image)}
+                            alt={service.title}
+                            width={1200}
+                            height={800}
                   className="w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-              </motion.div>
+             />   </div>
+
+        {/* OVERLAY */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+
+      </motion.div>
+
             ))}
 
           </div>
