@@ -5,6 +5,8 @@ import { motion } from "framer-motion"
 import { useMemo, useState } from "react"
 
 import { freelancingServices } from "@/app/data/freelancing"
+import Image from "next/image"
+import { cloudinaryUrl } from "@/app/lib/cloudinary"
 
 import {
   Search,
@@ -19,7 +21,16 @@ export default function FreelancingGalleryPage() {
   const [search, setSearch] = useState("")
   const [view, setView] = useState("grid")
   const [sort, setSort] = useState("all")
-
+ const categories = useMemo(() => {
+  return [
+    "all",
+    ...new Set(
+      freelancingServices.map((service) =>
+        service.category.trim().toLowerCase()
+      )
+    ),
+  ]
+}, [])
   const filteredServices = useMemo(() => {
     const query = search.trim().toLowerCase()
 
@@ -182,7 +193,7 @@ export default function FreelancingGalleryPage() {
                 <span className="font-semibold text-white">
                   {filteredServices.length}
                 </span>{" "}
-                Services
+                works found
               </span>
 
             </div>
@@ -232,22 +243,18 @@ export default function FreelancingGalleryPage() {
 
               <div className="relative">
 
-                <select
-                  value={sort}
-                  onChange={(e) => setSort(e.target.value)}
-                  className="h-10 appearance-none rounded-2xl border border-white/10 bg-[#0B1220]/80 px-4 pr-10 text-sm"
-                >
-                  <option value="all">All</option>
-                  <option value="development">
-                    Development
-                  </option>
-                  <option value="design">
-                    Design
-                  </option>
-                  <option value="commerce">
-                    Commerce
-                  </option>
-                </select>
+                 <select
+  value={sort}
+  onChange={(e) => setSort(e.target.value)}
+  className="h-10 appearance-none rounded-2xl border border-white/10 bg-[#0B1220]/80 px-4 pr-10 text-sm text-gray-300 outline-none transition-all duration-300 focus:border-cyan-400/40"
+>
+  {categories.map((category) => (
+    <option key={category} value={category}>
+      {category.charAt(0).toUpperCase() + category.slice(1)}
+    </option>
+  ))}
+</select>
+
 
                 <SlidersHorizontal className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-500" />
 
@@ -320,11 +327,13 @@ export default function FreelancingGalleryPage() {
 
               <div className="relative">
 
-                <img
-                  src={service.image}
-                  alt={service.title}
-                  className="h-[500px] w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                />
+                <Image
+                                   src={cloudinaryUrl(service.image)}
+                                   alt={service.title}
+                                   width={1200}
+                                   height={800}
+                                   className="h-[500px] w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                                 />
 
                 <div className="absolute inset-0 bg-gradient-to-t from-[#050816] via-[#050816]/40 to-transparent" />
 
@@ -432,19 +441,14 @@ export default function FreelancingGalleryPage() {
 
         <div className="overflow-hidden rounded-[24px] md:w-[320px]">
 
-          <img
-            src={service.image}
-            alt={service.title}
-            className="
-              h-[240px]
-              w-full
-              object-cover
-              transition-transform
-              duration-700
-              group-hover:scale-105
-              md:h-full
-            "
-          />
+             <Image
+                             src={cloudinaryUrl(service.image)}
+                             alt={service.title}
+                             width={1200}
+                             height={800}
+                             className="h-[500px] w-full object-cover transition-transform duration-700 group-hover:scale-105 md:h-full"
+                           />
+         
 
         </div>
 
