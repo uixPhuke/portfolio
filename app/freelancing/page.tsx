@@ -306,34 +306,40 @@ export default function FreelancingGalleryPage() {
 
           {filteredServices.map((service, index) => (
 
-            <motion.div
-              key={service.slug}
-              initial={{
-                opacity: 0,
-                y: 40,
-              }}
-              whileInView={{
-                opacity: 1,
-                y: 0,
-              }}
-              transition={{
-                delay: index * 0.05,
-              }}
-              whileHover={{
-                y: -8,
-              }}
-              className="group overflow-hidden rounded-[34px] border border-white/10 bg-white/[0.03] backdrop-blur-2xl"
-            >
+             <motion.div
+              layout
+                key={service.slug}
+                initial={{
+                  opacity: 0,
+                  y: 50,
+                }}
+                whileInView={{
+                  opacity: 1,
+                  y: 0,
+                }}
+                transition={{
+                  duration: 0.5,
+                  delay: index * 0.05,
+                }}
+                viewport={{
+                  once: true,
+                }}
+                whileHover={{
+                  y: -8,
+                }}
+                className="group relative overflow-hidden rounded-[34px] border border-white/10 bg-white/[0.03] backdrop-blur-2xl"
+              >
 
               <div className="relative">
 
-                <Image
-                                   src={cloudinaryUrl(service.image)}
-                                   alt={service.title}
-                                   width={1200}
-                                   height={800}
-                                   className="h-[500px] w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                                 />
+               <Image
+  src={cloudinaryUrl(service.image)}
+  alt={service.title}
+  width={1200}
+  height={800}
+ className="h-[500px] w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                
+/>
 
                 <div className="absolute inset-0 bg-gradient-to-t from-[#050816] via-[#050816]/40 to-transparent" />
 
@@ -405,50 +411,34 @@ export default function FreelancingGalleryPage() {
     {filteredServices.map((service, index) => (
 
       <motion.div
-        key={service.slug}
-        initial={{
-          opacity: 0,
-          y: 30,
-        }}
-        whileInView={{
-          opacity: 1,
-          y: 0,
-        }}
-        transition={{
-          duration: 0.4,
-          delay: index * 0.05,
-        }}
-        viewport={{
-          once: true,
-        }}
-        className="
-          group
-          flex
-          flex-col
-          gap-6
-          rounded-[28px]
-          border
-          border-white/10
-          bg-white/[0.03]
-          p-5
-          backdrop-blur-2xl
-          transition-all
-          duration-300
-          hover:border-cyan-400/20
-          md:flex-row
-        "
-      >
-
+                key={service.slug}
+                initial={{
+                  opacity: 0,
+                  y: 30,
+                }}
+                whileInView={{
+                  opacity: 1,
+                  y: 0,
+                }}
+                transition={{
+                  duration: 0.4,
+                  delay: index * 0.05,
+                }}
+                viewport={{
+                  once: true,
+                }}
+                className="group flex flex-col gap-6 rounded-[28px] border border-white/10 bg-white/[0.03] p-5 backdrop-blur-2xl transition-all duration-300 hover:border-cyan-400/20 md:flex-row"
+              >
         <div className="overflow-hidden rounded-[24px] md:w-[320px]">
 
-             <Image
-                             src={cloudinaryUrl(service.image)}
-                             alt={service.title}
-                             width={1200}
-                             height={800}
-                             className="h-[500px] w-full object-cover transition-transform duration-700 group-hover:scale-105 md:h-full"
-                           />
-         
+            <Image
+  src={cloudinaryUrl(service.image)}
+  alt={service.title}
+  width={1200}
+  height={800}
+  className="h-[500px] w-full object-cover transition-transform duration-700 group-hover:scale-105 md:h-full"
+                  
+/>
 
         </div>
 
