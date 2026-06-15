@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import { Syne, Inter } from "next/font/google"
+import { Syne, Inter, Geist_Mono, Outfit } from "next/font/google"
 
 import "./globals.css"
 
@@ -13,9 +13,9 @@ const inter = Inter({
   weight: ["400", "500", "600", "700"],
 })
 
-const syne = Syne({
+const syne = Outfit({
   subsets: ["latin"],
-  variable: "--font-syne",
+  variable: "--font-outfit",
   weight: ["500", "600", "700", "800"],
 })
 
