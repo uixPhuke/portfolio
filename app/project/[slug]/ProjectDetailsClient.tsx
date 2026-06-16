@@ -43,7 +43,7 @@ export default function ProjectDetailsClient({
         className={`absolute left-0 top-0 h-[500px] w-[500px] rounded-full bg-gradient-to-r ${project.color} opacity-20 blur-[140px]`}
       />
 
-      <div className="relative z-10 mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
+      <div className="relative z-10 mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-6">
 
         {/* BACK */}
         <Link
