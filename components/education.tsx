@@ -191,7 +191,7 @@ export default function EducationTree() {
   whileInView={{ scaleX: 1, opacity: 1 }}
   transition={{
     duration: 0.4,
-    delay: index * 0.1 + 0.5,
+    delay: index * 0.1 + 0.6,
   }}
   viewport={{ once: true }}
   style={{
