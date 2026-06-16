@@ -410,7 +410,7 @@ export default function FreelancingGalleryPage() {
 
     {filteredServices.map((service, index) => (
 
-      <motion.div
+       <motion.div
                 key={service.slug}
                 initial={{
                   opacity: 0,
