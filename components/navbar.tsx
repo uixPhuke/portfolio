@@ -35,7 +35,7 @@ export default function Navbar() {
   />
 </Link>
 
-          <h2 className="hidden lg:flex items-center gap-6">
+          <p className="hidden lg:flex items-center gap-6">
             {navItems.map((item) => (
               <Link
                 key={item.label}
@@ -46,7 +46,7 @@ export default function Navbar() {
                 {item.label}
               </Link>
             ))}
-          </h2>
+          </p>
         </div>
 
         {/* RIGHT */}
