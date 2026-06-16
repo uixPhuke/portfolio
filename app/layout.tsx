@@ -56,7 +56,7 @@ export const metadata: Metadata = {
   creator: "Ruhon Borah",
 
   icons: {
-    icon: "/1.png",
+    icon: "/favicon.ico",
   },
 
   openGraph: {
