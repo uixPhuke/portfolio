@@ -31,6 +31,7 @@ export const freelancingServices = [
     ],
 
     images: [
+      "23","21","11","22",
      "v1",
   "v2",
   "old_hwukpl",
