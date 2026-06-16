@@ -114,9 +114,9 @@ export default function DesignDetailsClient({
               className={`mt-10 inline-flex items-center gap-3 rounded-2xl bg-gradient-to-r ${design.color} px-7 py-4 text-sm font-semibold text-white transition-all duration-300 hover:scale-[1.03]`}
             >
 
-              View Project
+              Hire Me
 
-              <ArrowUpRight className="h-4 w-4" />
+              <ArrowUpRight href="/contact" className="h-4 w-4" />
 
             </button>
 
