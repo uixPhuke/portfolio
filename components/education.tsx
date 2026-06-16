@@ -177,6 +177,7 @@ export default function EducationTree() {
           }}
           viewport={{
             once: true,
+            amount: 0.3,
           }}
           className={`relative flex w-full ${
             isLeft ? "justify-start" : "justify-end"
@@ -184,13 +185,24 @@ export default function EducationTree() {
         >
 
           {/* BRANCH LINE */}
-          <div
-            className={`absolute top-10 hidden h-px w-[120px] bg-gradient-to-r md:block ${
-              isLeft
-                ? "right-1/2 from-cyan-400 to-transparent"
-                : "left-1/2 from-transparent to-cyan-400"
-            }`}
-          />
+          {/* BRANCH LINE */}
+<motion.div
+  initial={{ scaleX: 0, opacity: 0 }}
+  whileInView={{ scaleX: 1, opacity: 1 }}
+  transition={{
+    duration: 0.4,
+    delay: index * 0.1 + 0.5,
+  }}
+  viewport={{ once: true }}
+  style={{
+    originX: isLeft ? 1 : 0,
+  }}
+  className={`absolute top-10 hidden h-px w-[120px] md:block ${
+    isLeft
+      ? "right-1/2 bg-gradient-to-r from-cyan-400 to-transparent"
+      : "left-1/2 bg-gradient-to-r from-transparent to-cyan-400"
+  }`}
+/>
 
           {/* NODE */}
           <div className="absolute left-1/2 top-6 hidden -translate-x-1/2 md:flex">
