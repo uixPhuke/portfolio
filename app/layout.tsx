@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import { Syne, Inter, Geist_Mono, Outfit } from "next/font/google"
+import { Syne, Inter, Geist_Mono, Outfit ,DM_Serif_Display,Cormorant_Garamond} from "next/font/google"
 
 import "./globals.css"
 
@@ -13,10 +13,21 @@ const inter = Inter({
   weight: ["400", "500", "600", "700"],
 })
 
-const syne = Outfit({
+const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
-  variable: "--font-outfit",
+  variable: "--font-cormorant",
+  weight: "500",
+});
+
+const syne = Syne({
+  subsets: ["latin"],
+  variable: "--font-syne",
   weight: ["500", "600", "700", "800"],
+})
+const dmSerifDisplay = DM_Serif_Display({
+  subsets: ["latin"],
+  variable: "--font-dm-serif-display",
+  weight: ["400", ],
 })
 
 export const metadata: Metadata = {
@@ -86,6 +97,8 @@ export default function RootLayout({
         className={`
           ${inter.variable}
           ${syne.variable}
+          ${dmSerifDisplay.variable}
+          ${cormorant.variable}
           bg-[#0d1117]
           text-white
           antialiased
