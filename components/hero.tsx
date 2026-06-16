@@ -29,12 +29,46 @@ export default function Hero() {
       className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[#0d1117] px-6 text-center"
     >
       {/* GLOBAL BACKGROUND */}
-      <div className="absolute inset-0">
-        {/* MAIN GLOW */}
-        <div className="absolute left-1/2 top-[-200px] h-[500px] w-[1000px] -translate-x-1/2 rounded-full bg-blue-800 blur-[180px]" />
- {/* GRID */}
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.025)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.025)_1px,transparent_1px)] bg-[size:80px_80px]" />
-        {/* DARK OVERLAY */}
+     {/* GLOBAL BACKGROUND */}
+<div className="absolute inset-0 overflow-hidden">
+  {/* MAIN GLOW */}
+  <div
+    className="
+      absolute left-1/2 top-[-120px]
+      h-[280px] w-[280px]
+      -translate-x-1/2 rounded-full
+      bg-blue-700/70 blur-[100px]
+
+      sm:top-[-150px]
+      sm:h-[400px] sm:w-[400px]
+      sm:blur-[120px]
+
+      md:top-[-180px]
+      md:h-[500px] md:w-[800px]
+      md:blur-[160px]
+
+      lg:w-[1000px]
+      lg:blur-[180px]
+    "
+  />
+
+  {/* GRID */}
+  <div
+    className="
+      absolute inset-0
+      bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)]
+      bg-[size:40px_40px]
+
+      sm:bg-[size:50px_50px]
+      md:bg-[size:70px_70px]
+      lg:bg-[size:80px_80px]
+    "
+  />
+
+  {/* VIGNETTE */}
+  <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#0d1117]" />
+
+  {/* DARK OVERLAY */}
         <div className="absolute inset-0 " />
       </div>
 
