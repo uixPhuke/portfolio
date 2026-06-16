@@ -82,11 +82,11 @@ export default function Services() {
           viewport={{ once: true }}
           className="mx-auto mb-28 max-w-4xl text-center"
         >
-          <h2 className="text-4xl font-bold leading-tight md:text-6xl">
+          <p className="text-4xl font-bold leading-tight md:text-6xl">
             Built with creativity,
             <br />
             strategy & technology
-          </h2>
+          </p>
 
           <p className="mt-6 text-lg text-gray-400">
             From stunning visuals to scalable applications,
@@ -96,23 +96,35 @@ export default function Services() {
         </motion.div>
 
         {/* CONNECTION LINES */}
-        <div className="pointer-events-none absolute left-1/2 top-[280px] hidden h-[260px] w-[2px] -translate-x-1/2 bg-gradient-to-b from-violet-500/60 to-transparent lg:block" />
+        <div className="relative mb-24 flex justify-center">
+  {/* Vertical Line */}
+  <div className="pointer-events-none absolute -top-24 left-1/2 h-80 w-px -translate-x-1/2 bg-gradient-to-b from-transparent via-violet-500/70 to-transparent" />
 
-        <div className="pointer-events-none absolute left-[25%] top-[420px] hidden h-[2px] w-[20%] bg-gradient-to-r from-transparent via-cyan-400/60 to-transparent lg:block" />
+  {/* Horizontal Lines */}
+  <div className="pointer-events-none absolute top-1/2 left-0 hidden h-px w-[55%] -translate-y-1/2 bg-gradient-to-r from-transparent via-cyan-400/60 to-transparent lg:block" />
 
-        <div className="pointer-events-none absolute right-[25%] top-[420px] hidden h-[2px] w-[20%] bg-gradient-to-r from-transparent via-pink-400/60 to-transparent lg:block" />
+  <div className="pointer-events-none absolute top-1/2 right-0 hidden h-px w-[55%] -translate-y-1/2 bg-gradient-to-r from-transparent via-pink-400/60 to-transparent lg:block" />
 
-        {/* CENTER CHIP */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.7 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="mx-auto mb-24 flex h-28 w-72 items-center justify-center rounded-3xl border border-white/10 bg-white/[0.04] text-3xl font-semibold shadow-[0_0_60px_rgba(139,92,246,0.2)] backdrop-blur-2xl"
-        >
-          Powered By
-        </motion.div>
-
+  {/* Powered By Card */}
+  <motion.div
+    initial={{ opacity: 0, scale: 0.7 }}
+    whileInView={{ opacity: 1, scale: 1 }}
+    transition={{ duration: 0.6 }}
+    viewport={{ once: true }}
+    className="
+      relative z-10
+      flex h-28 w-72 items-center justify-center
+      rounded-3xl border border-white/10
+      bg-white/[0.04]
+      text-3xl font-semibold
+      shadow-[0_0_60px_rgba(139,92,246,0.2)]
+      backdrop-blur-2xl
+    "
+    style={{ willChange: "transform" }}
+  >
+    Powered By
+  </motion.div>
+</div>
         {/* TECH STACK */}
         {/* TECH STACK */}
 <motion.div
@@ -249,10 +261,10 @@ export default function Services() {
                   {service.description}
                 </p>
 
-                {/* BUTTON */}
+                {/* BUTTON 
                 <button className="mt-8 rounded-full border border-white/10 bg-white/5 px-6 py-3 text-sm transition-all duration-300 hover:bg-white hover:text-black">
                   Learn More
-                </button>
+                </button>*/}
               </div>
             </motion.div>
           ))}
