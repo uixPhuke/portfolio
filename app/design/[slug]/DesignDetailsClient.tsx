@@ -58,7 +58,7 @@ export default function DesignDetailsClient({
         className={`absolute left-0 top-0 h-[500px] w-[500px] rounded-full bg-gradient-to-r ${design.color} opacity-20 blur-[140px]`}
       />
 
-      <div className="relative z-10 mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
+      <div className="relative z-10 mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-6">
 
         {/* BACK */}
         <Link
@@ -143,7 +143,8 @@ export default function DesignDetailsClient({
              alt={design.title}
              width={1200}
              height={800}
-             className="h-[500px] w-full object-cover"
+              sizes="(max-width:1024px) 100vw, 50vw"
+  className="h-full w-full object-cover"
            />
 
           </motion.div>
