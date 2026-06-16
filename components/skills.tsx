@@ -43,7 +43,6 @@ const categories = [
       { name: "CSS3", icon: FaCss3Alt, color: "text-blue-500" },
     ],
   },
-
   {
     title: "Backend",
     description: "Building scalable APIs and services.",
@@ -52,7 +51,6 @@ const categories = [
       { name: "Express", icon: SiExpress, color: "text-zinc-300" },
     ],
   },
-
   {
     title: "Database",
     description: "Managing and structuring data efficiently.",
@@ -61,21 +59,19 @@ const categories = [
       { name: "SQL", icon: FaDatabase, color: "text-cyan-400" },
     ],
   },
-
   {
-  title: "Programming",
-  description: "Languages I use to solve problems.",
-  className: "lg:col-span-2",
-  skills: [
-    { name: "JavaScript", icon: FaJs, color: "text-yellow-300" },
-    { name: "TypeScript", icon: SiTypescript, color: "text-blue-400" },
-    { name: "Python", icon: FaPython, color: "text-yellow-400" },
-    { name: "Java", icon: FaJava, color: "text-orange-400" },
-    { name: "C", icon: SiC, color: "text-blue-500" },
-    { name: "C++", icon: SiCplusplus, color: "text-blue-400" },
-  ],
-},
-
+    title: "Programming",
+    description: "Languages I use to solve problems.",
+    className: "lg:col-span-2",
+    skills: [
+      { name: "JavaScript", icon: FaJs, color: "text-yellow-300" },
+      { name: "TypeScript", icon: SiTypescript, color: "text-blue-400" },
+      { name: "Python", icon: FaPython, color: "text-yellow-400" },
+      { name: "Java", icon: FaJava, color: "text-orange-400" },
+      { name: "C", icon: SiC, color: "text-blue-500" },
+      { name: "C++", icon: SiCplusplus, color: "text-blue-400" },
+    ],
+  },
   {
     title: "Design",
     description: "Turning ideas into polished visuals.",
@@ -86,7 +82,6 @@ const categories = [
       { name: "After Effects", icon: BiLogoAdobe, color: "text-purple-400" },
     ],
   },
-
   {
     title: "Tools",
     description: "Utilities powering my workflow.",
@@ -98,6 +93,30 @@ const categories = [
     ],
   },
 ]
+
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.08,
+    },
+  },
+}
+
+const cardVariants = {
+  hidden: {
+    opacity: 0,
+    y: 30,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.7,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+}
 
 export default function Skills() {
   return (
@@ -122,10 +141,13 @@ export default function Skills() {
       <div className="relative z-10 mx-auto max-w-7xl px-6">
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{
+            duration: 0.8,
+            ease: [0.22, 1, 0.36, 1],
+          }}
           className="text-center"
         >
           <p className="mb-4 text-sm uppercase tracking-[0.3em] text-zinc-500">
@@ -145,19 +167,29 @@ export default function Skills() {
         </motion.div>
 
         {/* Bento Grid */}
-        <div className="mt-20 grid gap-6 lg:grid-cols-3">
-          {categories.map((category, index) => (
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.15 }}
+          className="mt-20 grid gap-6 lg:grid-cols-3"
+        >
+          {categories.map((category) => (
             <motion.div
               key={category.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{
-                duration: 0.5,
-                delay: index * 0.05,
+              
+              whileHover={{
+                y: -6,
+                transition: {
+                  duration: 0.2,
+                  ease: "easeOut",
+                },
               }}
-              whileHover={{ y: -4 }}
+              style={{
+                willChange: "transform, opacity",
+              }}
               className={`
+                transform-gpu
                 group relative overflow-hidden rounded-[32px]
                 border border-white/10
                 bg-zinc-900/50
@@ -169,8 +201,8 @@ export default function Skills() {
                 ${category.className || ""}
               `}
             >
-              {/* subtle glow */}
-              <div className="absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
+              {/* Glow */}
+              <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
                 <div className="absolute right-0 top-0 h-40 w-40 rounded-full bg-white/[0.04] blur-3xl" />
               </div>
 
@@ -188,15 +220,23 @@ export default function Skills() {
                     const Icon = skill.icon
 
                     return (
-                      <div
+                      <motion.div
                         key={skill.name}
+                        whileHover={{
+                          scale: 1.04,
+                        }}
+                        transition={{
+                          type: "spring",
+                          stiffness: 300,
+                          damping: 20,
+                        }}
                         className="
                           flex items-center gap-3
                           rounded-full
                           border border-white/10
                           bg-white/[0.03]
                           px-4 py-3
-                          transition-all duration-300
+                          transition-colors duration-300
                           hover:bg-white/[0.06]
                           hover:border-white/20
                         "
@@ -208,14 +248,14 @@ export default function Skills() {
                         <span className="text-sm font-medium">
                           {skill.name}
                         </span>
-                      </div>
+                      </motion.div>
                     )
                   })}
                 </div>
               </div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   )
