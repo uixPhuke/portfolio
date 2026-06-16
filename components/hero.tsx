@@ -118,7 +118,7 @@ export default function Hero() {
             GitHub
           </button>
 </Link>
-<Link href="/gpt" target="_blank" rel="noopener noreferrer">
+<Link href="/gpt" >
           <button className="h-14 rounded-md border border-white/20 px-8 font-semibold text-white hover:bg-white hover:text-black">
             Try GPT
           </button>
