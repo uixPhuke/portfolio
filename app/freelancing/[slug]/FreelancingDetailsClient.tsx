@@ -52,19 +52,19 @@ export default function FreelancingDetailsClient({
         className={`absolute left-0 top-0 h-[500px] w-[500px] rounded-full bg-gradient-to-r ${service.color} opacity-20 blur-[140px]`}
       />
 
-      <div className="relative z-10 mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
+      <div className="relative z-10 mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-6">
 
         {/* BACK */}
         <Link
           href="/freelancing"
-          className="inline-flex items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.03] px-5 py-3 text-sm text-gray-300 backdrop-blur-xl transition-all duration-300 hover:border-cyan-400/30"
+          className=" inline-flex items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.03] px-5 py-3 text-sm text-gray-300 backdrop-blur-xl transition-all duration-300 hover:border-cyan-400/30"
         >
           <ArrowLeft className="h-4 w-4" />
           Back to Services
         </Link>
 
         {/* HERO */}
-        <section className="mt-16 grid gap-14 lg:grid-cols-2 lg:items-center">
+        <section className="mt-12 grid gap-14 lg:grid-cols-2 lg:items-center">
 
           <motion.div
             initial={{ opacity: 0, y: 40 }}
