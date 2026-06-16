@@ -11,6 +11,7 @@ import Explore from "@/components/explore"
 import ScrollToTop from "@/components/scrollToTop"
 import Experience from "@/components/experience"
 import Education from "@/components/education"
+import About from "@/components/new"
 
 export default function Home() {
   return (
@@ -20,7 +21,8 @@ export default function Home() {
       <Hero />
       <Showcase />
       
-     <AboutCard />
+   
+     <About/>
       <Brands />
       <Services />
       <Skills />
