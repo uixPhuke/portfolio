@@ -63,11 +63,11 @@ export default function AboutCard() {
             </div>
 
             <h3 className="mt-8 text-5xl font-bold md:text-7xl">
-              Crafting
+              Turning
               <br />
 
               <span className="bg-gradient-to-r from-cyan-400 to-violet-400 bg-clip-text text-transparent">
-                Scalable Digital
+                Ideas into Digital
               </span>
 
               <br />
