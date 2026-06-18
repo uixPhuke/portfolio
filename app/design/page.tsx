@@ -355,6 +355,7 @@ export default function DesignGalleryPage() {
                 }}
                 viewport={{
                   once: true,
+
                 }}
                 className="group flex flex-col gap-6 rounded-[28px] border border-white/10 bg-white/[0.03] p-5 backdrop-blur-2xl transition-all duration-300 hover:border-cyan-400/20 md:flex-row"
               >
