@@ -82,11 +82,11 @@ export default function Services() {
           viewport={{ once: true }}
           className="mx-auto mb-28 max-w-4xl text-center"
         >
-          <p className="text-4xl font-bold leading-tight md:text-6xl">
+          <h2 className="text-4xl font-bold leading-tight md:text-6xl">
             Built with creativity,
             <br />
             strategy & technology
-          </p>
+          </h2>
 
           <p className="mt-6 text-lg text-gray-400">
             From stunning visuals to scalable applications,
