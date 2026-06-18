@@ -12,6 +12,8 @@ import ScrollToTop from "@/components/scrollToTop"
 import Experience from "@/components/experience"
 import Education from "@/components/education"
 import About from "@/components/new"
+import Projects from "@/components/projectsec"
+import Freelance from "@/components/freelancesec"
 
 export default function Home() {
   return (
@@ -28,6 +30,8 @@ export default function Home() {
       <Skills />
       <Experience/>
       <Education/>
+      <Projects/>
+      <Freelance/>
       <Explore />
 
       
