@@ -102,10 +102,7 @@ export default function FreelanceDashboard() {
               repeat: Infinity,
               ease: "easeInOut",
             }}
-            whileHover={{
-              y: -12,
-              scale: 1.02,
-            }}
+           
             className="relative overflow-hidden rounded-[32px] border border-white/10 bg-[#0A0A0A]/90 p-7 backdrop-blur-2xl"
           >
             {/* Spotlight */}
