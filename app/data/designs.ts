@@ -320,7 +320,7 @@ export const designs = [
   color: "from-violet-500 to-fuchsia-500",
 },
 {
-  slug: "T shirt",
+  slug: "t-shirt",
   title: "UiX Apparel",
   category: "fashion",
   image: "t1",
