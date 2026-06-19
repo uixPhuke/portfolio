@@ -27,12 +27,15 @@ export default function Home() {
      <About/>
       <Brands />
       <Services />
+      <Explore />
+      <Freelance/>
+       <Projects/>
       <Skills />
       <Experience/>
       <Education/>
-      <Projects/>
-      <Freelance/>
-      <Explore />
+     
+      
+      
 
       
     </main>
